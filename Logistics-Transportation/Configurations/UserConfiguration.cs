@@ -8,7 +8,7 @@ namespace Logistics_Transportation.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasIndex(x => x.Phone).IsUnique();
+            
         }
     }
 }
