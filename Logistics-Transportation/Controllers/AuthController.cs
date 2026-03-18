@@ -29,6 +29,9 @@ namespace Logistics_Transportation.Controllers
             {
                 return BadRequest(result.Errors);
             }
+
+            await _userManager.AddToRoleAsync(user, "Client");
+
             return Ok("Пользователь успешно зарегистрирован");
         }
 
@@ -45,11 +48,19 @@ namespace Logistics_Transportation.Controllers
             {
                 return Unauthorized("Неверный пароль");
             }
+
+            var roles = await _userManager.GetRolesAsync(user);
+
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.Email),
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
             };
+
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var jwt = new JwtSecurityToken(
                 issuer: AuthOptions.ISSUER,

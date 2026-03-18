@@ -13,8 +13,8 @@ namespace Logistics_Transportation.Models
         public  string PickAppAddress { get; set; }
         public string DeliveryAddress { get; set; }
         public string Description { get; set; }
-        public int CargoWeight { get; set; }
-        public int CargoVolume { get; set; }
+        public double CargoWeight { get; set; }
+        public double CargoVolume { get; set; }
         public DateTime RegistrationDateOrder { get; set; }
         public Trip trip { get; set; }
     }
