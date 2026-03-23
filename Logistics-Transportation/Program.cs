@@ -98,8 +98,31 @@ using (var scope = app.Services.CreateScope())
         if (!await roleManager.RoleExistsAsync(role))
             await roleManager.CreateAsync(new IdentityRole(role));
     }
-}
 
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+
+    var adminEmail = configuration["AdminSettings:Email"];
+    var adminPassword = configuration["AdminSettings:Password"];
+    var admin = await userManager.FindByEmailAsync(adminEmail);
+
+    if (admin == null)
+    {
+        admin = new User { UserName = adminEmail, Email = adminEmail };
+        await userManager.CreateAsync(admin, adminPassword);
+        await userManager.AddToRoleAsync(admin, "Admin");
+    }
+
+    var operatorEmail = configuration["OperatorSettings:Email"];
+    var operatorPassword = configuration["OperatorSettings:Password"];
+    var operatorUser = await userManager.FindByEmailAsync(operatorEmail);
+
+    if(operatorUser == null)
+    {
+        operatorUser = new User { UserName = operatorEmail, Email = operatorEmail };
+        await userManager.CreateAsync(operatorUser, operatorPassword);
+        await userManager.AddToRoleAsync(operatorUser, "Operator");
+    }
+}
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();

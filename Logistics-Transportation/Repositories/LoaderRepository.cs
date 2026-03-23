@@ -11,9 +11,29 @@ namespace Logistics_Transportation.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<List<Loader>> GetAllAsync()
+        public async Task<List<Loader>> GetAllWithFilterAsync(string? name, string? passport, int? minAge, int? maxAge)
         {
-            return await _dbContext.Loaders.AsNoTracking().ToListAsync();
+            var query = _dbContext.Loaders.AsNoTracking().AsQueryable();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(c => c.Name.Contains(name));
+            }
+            if (!string.IsNullOrEmpty(passport))
+            {
+                query = query.Where(c => c.Passport.Contains(passport));
+            }
+
+            if (minAge.HasValue)
+            {
+                query = query.Where(c => c.Age >= minAge);
+            }
+            if (maxAge.HasValue)
+            {
+                query = query.Where(c => c.Age <= maxAge);
+            }
+
+            return await query.ToListAsync();
         }
         public async Task<Loader?> GetByIdAsync(int id)
         {

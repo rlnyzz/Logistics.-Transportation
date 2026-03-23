@@ -4,7 +4,7 @@ namespace Logistics_Transportation.Repositories
 {
     public interface ITripLoaderRepository
     {
-        Task<List<TripLoaders>> GetAllAsync();
+        Task<List<TripLoaders>> GetAllWithFilterAsync(int? tripId, int? loaderId);
         Task<TripLoaders?> GetByIdAsync(int id);
         Task AddAsync(TripLoaders tripLoaders);
         Task UpdateAsync(TripLoaders tripLoaders);

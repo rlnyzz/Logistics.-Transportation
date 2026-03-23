@@ -19,20 +19,49 @@ namespace Logistics_Transportation.Controllers
             _orderRepository = orderRepository;
         }
 
-        [HttpGet("all")]
-        public async Task<IActionResult> GetAllOrders()
+        [HttpGet("all-orders")]
+        [Authorize(Roles = "Operator,Admin")]
+        public async Task<IActionResult> GetAllOrders([FromQuery] string? email ,[FromQuery] string? pickAppAdress, [FromQuery] string? deliveryAdress, [FromQuery] string? description,[FromQuery] DateTime? dateFrom, [FromQuery] DateTime? dateTo,
+            [FromQuery] double? minWeight, [FromQuery] double? maxWeight, [FromQuery] double? minVolume, [FromQuery] double? maxVolume)
         {
-            var orders = await _orderRepository.GetAllAsync();
+            var orders = await _orderRepository.GetAllWithFilterAsync(email, pickAppAdress, deliveryAdress, description,dateFrom, dateTo, minWeight, maxWeight, minVolume, maxVolume);
             return Ok(orders);
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Operator,Admin")]
         public async Task<IActionResult> GetOrderById(int id)
         {
             var order = await _orderRepository.GetByIdAsync(id);
             if (order == null)
             {
                 return NotFound("Заказ не найден по данному id");
+            }
+
+            return Ok(order);
+        }
+
+        [HttpGet("all-client-orders")]
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> GetAllClientOrder([FromQuery] string? pickAppAdress, [FromQuery] string? deliveryAdress, [FromQuery] string? description, [FromQuery] DateTime? dateFrom, [FromQuery] DateTime? dateTo,
+            [FromQuery] double? minWeight, [FromQuery] double? maxWeight, [FromQuery] double? minVolume, [FromQuery] double? maxVolume)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var orders = await _orderRepository.GetAllByUserIdWithFilterAsync(userId, pickAppAdress, deliveryAdress, description, dateFrom, dateTo, minWeight, maxWeight, minVolume, maxVolume);
+
+            return Ok(orders);
+            
+        }
+
+        [HttpGet("client-order-{id}")]
+        [Authorize(Roles ="Client")]
+        public async Task<IActionResult> GetClientOrderById(int id)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var order = await _orderRepository.GetOrderByUserIdAsync(userId, id);
+            if (order == null)
+            {
+                return NotFound("Заказ не найден");
             }
 
             return Ok(order);
@@ -57,7 +86,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Operator,Admin")]
         public async Task<IActionResult> PutOrder(int id, [FromBody] UpdateOrderDTO dto)
         {
             var order = await _orderRepository.GetByIdAsync(id);
@@ -76,7 +105,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Operator,Admin")]
         public async Task<IActionResult> DeleteOrder(int id)
         {
             var order = await _orderRepository.GetByIdAsync(id);

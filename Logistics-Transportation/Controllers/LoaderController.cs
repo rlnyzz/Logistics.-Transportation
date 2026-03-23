@@ -1,6 +1,7 @@
 ﻿using Logistics_Transportation.DTOs;
 using Logistics_Transportation.Models;
 using Logistics_Transportation.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,13 +18,15 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<IActionResult> GetAllLoaders()
+        [Authorize(Roles = "Admin,Operator")]
+        public async Task<IActionResult> GetAllLoaders([FromQuery] string? name, [FromQuery] string? passport, [FromQuery] int? minAge, [FromQuery] int? maxAge)
         {
-            var loader = await _loaderRepository.GetAllAsync();
+            var loader = await _loaderRepository.GetAllWithFilterAsync(name, passport, minAge, maxAge);
             return Ok(loader);
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,Operator")]
         public async Task<IActionResult> GetLoaderById(int id)
         {
             var loader = await _loaderRepository.GetByIdAsync(id);
@@ -36,6 +39,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateLoader([FromBody] CreateLoaderDTO dto)
         {
             var loader = new Loader
@@ -49,6 +53,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutLoader(int id, [FromBody] UpdateLoaderDTO dto)
         {
             var loader = await _loaderRepository.GetByIdAsync(id);
@@ -67,6 +72,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteLoader(int id)
         {
             var loader = await _loaderRepository.GetByIdAsync(id);

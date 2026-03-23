@@ -1,6 +1,7 @@
 ﻿using Logistics_Transportation.DTOs;
 using Logistics_Transportation.Models;
 using Logistics_Transportation.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,13 +18,15 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<IActionResult> GetAllTripLoaders()
+        [Authorize(Roles = "Operator,Admin")]
+        public async Task<IActionResult> GetAllTripLoaders([FromQuery] int? tripId, [FromQuery] int? loaderId)
         {
-            var tripLoader = await _tripLoaderRepository.GetAllAsync();
+            var tripLoader = await _tripLoaderRepository.GetAllWithFilterAsync(tripId, loaderId);
             return Ok(tripLoader);
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Operator,Admin")]
         public async Task<IActionResult> GetTripLoadersById(int id)
         {
             var tripLoader = await _tripLoaderRepository.GetByIdAsync(id);
@@ -36,6 +39,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Operator,Admin")]
         public async Task<IActionResult> CreateTripLoader([FromBody] CreateTripLoaderDTO dto)
         {
             var trip = await _tripLoaderRepository.GetTripIdByIdAsync(dto.TripId);
@@ -61,6 +65,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin,Operator")]
         public async Task<IActionResult> PutTripLoader(int id, [FromBody] UpdateTripLoaderDTO dto)
         {
             var tripLoader = await _tripLoaderRepository.GetByIdAsync(id);
@@ -89,6 +94,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin,Operator")]
         public async Task<IActionResult> DeleteTripLoader(int id)
         {
             var tripLoader = await _tripLoaderRepository.GetByIdAsync(id);

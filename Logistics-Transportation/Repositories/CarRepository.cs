@@ -38,5 +38,65 @@ namespace Logistics_Transportation.Repositories
             var licence = await _dbContext.LicenceCategories.FirstOrDefaultAsync(c => c.Name == name);
             return licence;
         }
+        public async Task<List<Car>> GetAllWithFilterAsync(string? carMake, string? carModel, string? typeOfCar, string? carNumber,
+            decimal? minCargoCapacityT, decimal? maxCargoCapacityT,
+            decimal? minTrunkVolumeL, decimal? maxTrunkVolumeL,
+            decimal? minFuelConsumption, decimal? maxFuelConsumption,
+            string? licenceCategory)
+        {
+            var query = _dbContext.Cars.AsNoTracking().AsQueryable();
+            var licence = await _dbContext.LicenceCategories.FirstOrDefaultAsync(c => c.Name == licenceCategory);
+
+            if (!string.IsNullOrEmpty(carMake))
+            {
+                query = query.Where(c => c.CarMake.Contains(carMake));
+            }
+            if (!string.IsNullOrEmpty(carModel))
+            {
+                query = query.Where(c => c.CarModel.Contains(carModel));
+            }
+            if (!string.IsNullOrEmpty(typeOfCar))
+            {
+                query = query.Where(c => c.TypeOfCar.Contains(typeOfCar));
+            }
+            if (!string.IsNullOrEmpty(carNumber))
+            {
+                query = query.Where(c => c.CarNumber.Contains(carNumber));
+            }
+
+            if (minCargoCapacityT.HasValue)
+            {
+                query = query.Where(c => c.CargoCapacityT >= minCargoCapacityT);
+            }
+            if (maxCargoCapacityT.HasValue)
+            {
+                query = query.Where(c => c.CargoCapacityT <= maxCargoCapacityT);
+            }
+
+            if (minTrunkVolumeL.HasValue)
+            {
+                query = query.Where(c => c.TrunkVolumeL >= minTrunkVolumeL);
+            }
+            if (maxTrunkVolumeL.HasValue)
+            {
+                query = query.Where(c => c.TrunkVolumeL <= maxTrunkVolumeL);
+            }
+
+            if (minFuelConsumption.HasValue)
+            {
+                query = query.Where(c => c.FuelConsumption >= minFuelConsumption);
+            }
+            if (maxFuelConsumption.HasValue)
+            {
+                query = query.Where(c => c.FuelConsumption <= maxFuelConsumption);
+            }
+
+            if (!string.IsNullOrEmpty(licenceCategory))
+            {
+                query = query.Where(c => c.LicenceCategoriesId == licence.Id);
+            }
+            
+            return await query.ToListAsync(); 
+        }
     }
 }

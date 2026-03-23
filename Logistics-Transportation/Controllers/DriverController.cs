@@ -1,6 +1,7 @@
 ﻿using Logistics_Transportation.DTOs;
 using Logistics_Transportation.Models;
 using Logistics_Transportation.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,13 +18,18 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<IActionResult> GetAllDrivers()
+        [Authorize(Roles = "Admin,Operator")]
+        public async Task<IActionResult> GetAllDrivers([FromQuery] string? name, [FromQuery] string? passport, 
+            [FromQuery] int? minAge, [FromQuery] int? maxAge,
+            [FromQuery] int? minRate, [FromQuery] int? maxRate,
+            [FromQuery] string? licenceCategory)
         {
-            var driver = await _driverRepository.GetAllAsync();
+            var driver = await _driverRepository.GetAllWithFilterAsync(name, passport, minAge, maxAge, minRate, maxRate, licenceCategory);
             return Ok(driver);
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,Operator")]
         public async Task<IActionResult> GetDriverById(int id)
         {
             var driver = await _driverRepository.GetByIdAsync(id);
@@ -35,6 +41,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateDriver([FromBody] CreateDriverDTO dto)
         {
             var licenceCategory = await _driverRepository.GetLicenceCategoryByNameAsync(dto.LicenceCategories);
@@ -55,6 +62,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutDriver(int id, [FromBody] UpdateDriverDTO dto)
         {
             var driver = await _driverRepository.GetByIdAsync(id);
@@ -79,6 +87,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteDriver(int id) 
         {
             var driver = await _driverRepository.GetByIdAsync(id);

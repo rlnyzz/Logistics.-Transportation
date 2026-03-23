@@ -1,10 +1,11 @@
-﻿using Logistics_Transportation.Security;
+﻿using Logistics_Transportation.Models;
+using Logistics_Transportation.Security;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Logistics_Transportation.Models;
 
 namespace Logistics_Transportation.Controllers
 {
@@ -72,6 +73,21 @@ namespace Logistics_Transportation.Controllers
                     SecurityAlgorithms.HmacSha256));
 
             return Ok(new JwtSecurityTokenHandler().WriteToken(jwt));
+        }
+
+        [HttpPost("assign-role")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AssignRole(string userId, string role)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                return NotFound("Пользователь не найден");
+
+            var result = await _userManager.AddToRoleAsync(user, role);
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
+
+            return Ok($"Роль {role} успешно назначена");
         }
     }
 }

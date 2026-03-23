@@ -1,7 +1,8 @@
 ﻿    using Logistics_Transportation.DTOs;
     using Logistics_Transportation.Models;
     using Logistics_Transportation.Repositories;
-    using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 
     namespace Logistics_Transportation.Controllers
@@ -16,14 +17,24 @@
                 _carRepository = carRepository;
             }
 
-            [HttpGet("all")]
-            public async Task<IActionResult> GetAllCars()
+        [HttpGet("all")]
+        [Authorize(Roles = "Admin,Operator")]
+        public async Task<IActionResult> GetAllCars([FromQuery] string? carMake, [FromQuery] string? carModel,[FromQuery] string? TypeOfCar, [FromQuery] string? carNumber, 
+                [FromQuery] decimal? minCargoCapacityT, [FromQuery] decimal? maxCargoCapacityT,
+                [FromQuery] decimal? minTrunkVolumeT, [FromQuery] decimal? maxTrunkVolumeL, 
+                [FromQuery] decimal? minFuelConsumption, [FromQuery] decimal? maxFuelConsumption,
+                [FromQuery] string? licenceCategory)
             {
-                var car = await _carRepository.GetAllAsync();
+                var car = await _carRepository.GetAllWithFilterAsync(carMake, carModel, TypeOfCar, carNumber, 
+                    minCargoCapacityT, maxCargoCapacityT, 
+                    minTrunkVolumeT, maxTrunkVolumeL,
+                    minFuelConsumption, maxFuelConsumption,
+                    licenceCategory);
                 return Ok(car);
             }
 
             [HttpGet("{id}")]
+            [Authorize(Roles = "Admin,Operator")]
             public async Task<IActionResult> GetCarsById(int id)
             {
                 var car = await _carRepository.GetByIdAsync(id);
@@ -35,6 +46,7 @@
             }
 
             [HttpPost]
+            [Authorize(Roles = "Admin")]
             public async Task<IActionResult> CreateCar([FromBody] CreateCarDTO dto)
             {
                 var licenceCategory = await _carRepository.GetLicenceCategoryByNameAsync(dto.LicenceCategories);
@@ -59,6 +71,7 @@
             }
 
             [HttpPut("{id}")]
+            [Authorize(Roles = "Admin")]
             public async Task<IActionResult> PutCar(int id, [FromBody] UpdateCarDTO dto)
             {
                 var car = await _carRepository.GetByIdAsync(id);
@@ -86,6 +99,7 @@
             }
 
             [HttpDelete("{id}")]
+            [Authorize(Roles = "Admin")]
             public async Task<IActionResult> DelateCar(int id)
             {
                 var car = await _carRepository.GetByIdAsync(id);

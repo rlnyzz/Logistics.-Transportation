@@ -1,8 +1,9 @@
 ﻿using Logistics_Transportation.DTOs;
 using Logistics_Transportation.Models;
 using Logistics_Transportation.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Logistics_Transportation.Controllers
 {
@@ -17,13 +18,19 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<IActionResult> GetAllTrips()
+        [Authorize(Roles = "Admin,Operator")]
+        public async Task<IActionResult> GetAllTrips([FromQuery] int? orderId, [FromQuery] int? driverId, [FromQuery] int? carId,
+            [FromQuery] decimal? minFinalePrice, [FromQuery] decimal? maxFinalePrice,
+            [FromQuery] int? minFinaleTimeMinutes, [FromQuery] int? maxFinaleTimeMinutes)
         {
-            var trip = await _tripRepository.GetAllAsync();
+            var trip = await _tripRepository.GetAllWithFilterAsync(orderId, driverId, carId, 
+                minFinalePrice, maxFinalePrice,
+                minFinaleTimeMinutes, maxFinaleTimeMinutes);
             return Ok(trip);
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,Operator")]
         public async Task<IActionResult> GetTripById(int id)
         {
             var trip = await _tripRepository.GetByIdAsync(id);
@@ -34,7 +41,37 @@ namespace Logistics_Transportation.Controllers
             return Ok(trip);
         }
 
+        [HttpGet("all-client-trips")]
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> GetAllClientTrip([FromQuery] int? orderId, [FromQuery] int? driverId, [FromQuery] int? carId,
+            [FromQuery] decimal? minFinalePrice, [FromQuery] decimal? maxFinalePrice,
+            [FromQuery] int? minFinaleTimeMinutes, [FromQuery] int? maxFinaleTimeMinutes)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            var trips = await _tripRepository.GetAllByUserIdWithFilterAsync(userId, orderId, driverId, carId,
+                minFinalePrice, maxFinalePrice,
+                minFinaleTimeMinutes, maxFinaleTimeMinutes);
+
+            return Ok(trips);
+        }
+
+        [HttpGet("client-trip-{id}")]
+        [Authorize(Roles = "Client")]
+        public async Task<IActionResult> GetAllClientById(int id)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var trip = await _tripRepository.GetTripByUserIdAsync(userId, id);
+            if (trip == null)
+            {
+                return NotFound("Рейс не найден");
+            }
+
+            return Ok(trip);
+        }
+
         [HttpPost]
+        [Authorize(Roles = "Admin,Operator")]
         public async Task<IActionResult> CreateTrip([FromBody] CreateTripDTO dto)
         {
             var order = await _tripRepository.GetByIdAsyncOrder(dto.OrderId);
@@ -73,6 +110,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin,Operator")]
         public async Task<IActionResult> PutTrip(int id, [FromBody] UpdateTripDTO dto)
         {
             var trip = await _tripRepository.GetByIdAsync(id);
@@ -103,6 +141,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin,Operator")]
         public async Task<IActionResult> DeleteTrip(int id)
         {
             var trip = await _tripRepository.GetByIdAsync(id);

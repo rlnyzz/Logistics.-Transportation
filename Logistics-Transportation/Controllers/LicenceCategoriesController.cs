@@ -1,6 +1,7 @@
 ﻿using Logistics_Transportation.DTOs;
 using Logistics_Transportation.Models;
 using Logistics_Transportation.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,15 +16,17 @@ namespace Logistics_Transportation.Controllers
         {
             _licenceCategoryRepository = licenceCategoryRepository;
         }
-
+ 
         [HttpGet("all")]
-        public async Task<IActionResult> GetAllLicenceCategories()
+        [Authorize(Roles = "Admin,Operator")]
+        public async Task<IActionResult> GetAllLicenceCategories([FromQuery] string? licenceName)
         {
-            var licenceCategories = await _licenceCategoryRepository.GetAllAsync();
+            var licenceCategories = await _licenceCategoryRepository.GetAllWithFilterAsync(licenceName);
             return Ok(licenceCategories);
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,Operator")]
         public async Task<IActionResult> GetLicenceCategoriesById(int id)
         {
             var licenceCategory = await _licenceCategoryRepository.GetByIdAsync(id);
@@ -37,6 +40,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateLicenceCategories([FromBody] CreateLicenceCategoriesDTO dto)
         {
             var licenceCategory = new LicenceCategories
@@ -48,6 +52,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateLicenceCategories(int id, [FromBody] UpdateLicenceCategoriesDTO dto)
         {
             var licenceCategory = await _licenceCategoryRepository.GetByIdAsync(id);
@@ -64,6 +69,7 @@ namespace Logistics_Transportation.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteLicenceCategories(int id)
         {
             var licenceCategory = await _licenceCategoryRepository.GetByIdAsync(id);

@@ -11,9 +11,20 @@ namespace Logistics_Transportation.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<List<TripLoaders>> GetAllAsync()
+        public async Task<List<TripLoaders>> GetAllWithFilterAsync(int? tripId, int? loaderId)
         {
-            return await _dbContext.TripLoaders.AsNoTracking().ToListAsync();
+            var query = _dbContext.TripLoaders.AsNoTracking().AsQueryable();
+
+            if (tripId.HasValue)
+            {
+                query = query.Where(c => c.TripId == tripId);
+            }
+            if (loaderId.HasValue)
+            {
+                query = query.Where(c => c.LoaderId == loaderId);
+            }
+
+            return await query.ToListAsync();
         }
 
         public async Task<TripLoaders?> GetByIdAsync(int id)

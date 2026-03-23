@@ -10,9 +10,16 @@ namespace Logistics_Transportation.Repositories
         {
             _dbContext = dbContext;
         }
-        public async Task<List<LicenceCategories>> GetAllAsync()
+        public async Task<List<LicenceCategories>> GetAllWithFilterAsync(string? licenceName)
         {
-            return await _dbContext.LicenceCategories.AsNoTracking().ToListAsync();
+            var query = _dbContext.LicenceCategories.AsNoTracking().AsQueryable();
+
+            if (!string.IsNullOrEmpty(licenceName))
+            {
+                query = query.Where(c => c.Name.Contains(licenceName));
+            }
+
+            return await query.ToListAsync();
         }
         public async Task<LicenceCategories?> GetByIdAsync(int id)
         {
