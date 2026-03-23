@@ -1,7 +1,5 @@
-.vs/
-bin/
-obj/
-*.user
-*.suo
-appsettings.Development.json
-.dockerignore
+**/appsettings.Development.json
+**/bin/
+**/obj/
+**/.vs/
+**/*.user
