@@ -1,6 +1,7 @@
 ﻿using Logistics_Transportation.DTOs;
 using Logistics_Transportation.Models;
 using Logistics_Transportation.Repositories;
+using Logistics_Transportation.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,13 @@ namespace Logistics_Transportation.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderRepository _orderRepository;
+        private readonly IActionLogService _actionService;
 
-        public OrderController(IOrderRepository orderRepository)
+        public OrderController(IOrderRepository orderRepository, IActionLogService actionService)
         {
             _orderRepository = orderRepository;
+            _actionService = actionService;
+
         }
 
         [HttpGet("all-orders")]
@@ -81,7 +85,20 @@ namespace Logistics_Transportation.Controllers
                 CargoVolume = dto.CargoVolume,
                 RegistrationDateOrder = DateTime.UtcNow
             };
+
             await _orderRepository.AddAsync(order);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "CREATE",
+                EntityName = "Order",
+                EntityId = order.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok(order);
         }
 
@@ -101,6 +118,18 @@ namespace Logistics_Transportation.Controllers
             order.CargoVolume = dto.CargoVolume;
 
             await _orderRepository.UpdateAsync(order);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "PUT",
+                EntityName = "Order",
+                EntityId = order.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok("Заказ успешно обновлен");
         }
 
@@ -113,7 +142,20 @@ namespace Logistics_Transportation.Controllers
             {
                 return NotFound("Заказ не найден по данному id");
             }
+
             await _orderRepository.DeleteAsync(order);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "DELETE",
+                EntityName = "Order",
+                EntityId = order.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok("Заказ успешно удален");
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Logistics_Transportation.DTOs;
 using Logistics_Transportation.Models;
 using Logistics_Transportation.Repositories;
+using Logistics_Transportation.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -12,9 +13,11 @@ namespace Logistics_Transportation.Controllers
     public class TripController : ControllerBase
     {
         private readonly ITripRepository _tripRepository;
-        public TripController(ITripRepository tripRepository)
+        private readonly IActionLogService _actionService;
+        public TripController(ITripRepository tripRepository, IActionLogService actionService)
         {
             _tripRepository = tripRepository;
+            _actionService = actionService;
         }
 
         [HttpGet("all")]
@@ -106,6 +109,18 @@ namespace Logistics_Transportation.Controllers
             };
 
             await _tripRepository.AddAsync(trip);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "CREATE",
+                EntityName = "Trip",
+                EntityId = trip.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok(trip);
         }
 
@@ -137,6 +152,18 @@ namespace Logistics_Transportation.Controllers
             trip.FinaleTimeMinutes = dto.FinalTimeMinutes;
 
             await _tripRepository.UpdateAsync(trip);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "PUT",
+                EntityName = "Trip",
+                EntityId = trip.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok("Рейс успешно обновлен");
         }
 
@@ -151,6 +178,18 @@ namespace Logistics_Transportation.Controllers
             }
 
             await _tripRepository.DeleteAsync(trip);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "DELETE",
+                EntityName = "Trip",
+                EntityId = trip.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok("Рейс успешно удален");
         }
     }

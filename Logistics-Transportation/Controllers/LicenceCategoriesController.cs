@@ -1,9 +1,11 @@
 ﻿using Logistics_Transportation.DTOs;
 using Logistics_Transportation.Models;
 using Logistics_Transportation.Repositories;
+using Logistics_Transportation.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Logistics_Transportation.Controllers
 {
@@ -12,9 +14,11 @@ namespace Logistics_Transportation.Controllers
     public class LicenceCategoriesController : ControllerBase
     {
         private readonly ILicenceCategoryRepository _licenceCategoryRepository;
-        public LicenceCategoriesController(ILicenceCategoryRepository licenceCategoryRepository)
+        private readonly IActionLogService _actionService;
+        public LicenceCategoriesController(ILicenceCategoryRepository licenceCategoryRepository, IActionLogService actionLogService)
         {
             _licenceCategoryRepository = licenceCategoryRepository;
+            _actionService = actionLogService;
         }
  
         [HttpGet("all")]
@@ -47,7 +51,20 @@ namespace Logistics_Transportation.Controllers
             {
                 Name = dto.Name
             };
+
             await _licenceCategoryRepository.AddAsync(licenceCategory);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "CREATE",
+                EntityName = "LicenceCategory",
+                EntityId = licenceCategory.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok(licenceCategory);
         }
 
@@ -65,6 +82,18 @@ namespace Logistics_Transportation.Controllers
             licenceCategory.Name = dto.Name;
 
             await _licenceCategoryRepository.UpdateAsync(licenceCategory);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "PUT",
+                EntityName = "LicenceCategory",
+                EntityId = licenceCategory.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok("Категория прав успешно обновлена");
         }
 
@@ -80,6 +109,18 @@ namespace Logistics_Transportation.Controllers
             }
 
             await _licenceCategoryRepository.DeleteAsync(licenceCategory);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "DELETE",
+                EntityName = "LicenceCategory",
+                EntityId = licenceCategory.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok("Категория прав успешно удалена");
         }
     }

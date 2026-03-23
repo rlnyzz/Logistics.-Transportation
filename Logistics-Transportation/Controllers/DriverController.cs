@@ -1,9 +1,11 @@
 ﻿using Logistics_Transportation.DTOs;
 using Logistics_Transportation.Models;
 using Logistics_Transportation.Repositories;
+using Logistics_Transportation.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Logistics_Transportation.Controllers
 {
@@ -12,9 +14,11 @@ namespace Logistics_Transportation.Controllers
     public class DriverController : ControllerBase
     {
         private readonly IDriverRepository _driverRepository;
-        public DriverController(IDriverRepository driverRepository)
+        private readonly IActionLogService _actionService;
+        public DriverController(IDriverRepository driverRepository, IActionLogService actionService)
         {
             _driverRepository = driverRepository;
+            _actionService = actionService;
         }
 
         [HttpGet("all")]
@@ -57,7 +61,20 @@ namespace Logistics_Transportation.Controllers
                 Rate = dto.Rate,
                 CategoryLicenceId = licenceCategory.Id
             };
+
             await _driverRepository.AddAsync(driver);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "CREATE",
+                EntityName = "Driver",
+                EntityId = driver.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok(driver);
         }
 
@@ -83,6 +100,18 @@ namespace Logistics_Transportation.Controllers
             driver.CategoryLicenceId = licenceCategory.Id;
 
             await _driverRepository.UpdateAsync(driver);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "PUT",
+                EntityName = "Driver",
+                EntityId = driver.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok("Водитель успешно обновлен");
         }
 
@@ -96,6 +125,18 @@ namespace Logistics_Transportation.Controllers
                 return NotFound("Водитель не найден с данным id");
             }
             await _driverRepository.DeleteAsync(driver);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "DELETE",
+                EntityName = "Driver",
+                EntityId = driver.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok("Водитель успешно удален");
         }
     }

@@ -1,9 +1,11 @@
 ﻿using Logistics_Transportation.DTOs;
 using Logistics_Transportation.Models;
 using Logistics_Transportation.Repositories;
+using Logistics_Transportation.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Logistics_Transportation.Controllers
 {
@@ -11,10 +13,14 @@ namespace Logistics_Transportation.Controllers
     [Route("api/trip-loader")]
     public class TripLoaderController : ControllerBase
     {
+        string TripLoaderNameForAction { get; set; } = "TripLoader";
+
         private readonly ITripLoaderRepository _tripLoaderRepository;
-        public TripLoaderController(ITripLoaderRepository tripLoaderRepository)
+        private readonly IActionLogService _actionService;
+        public TripLoaderController(ITripLoaderRepository tripLoaderRepository, IActionLogService actionService)
         {
             _tripLoaderRepository = tripLoaderRepository;
+            _actionService = actionService;
         }
 
         [HttpGet("all")]
@@ -61,6 +67,18 @@ namespace Logistics_Transportation.Controllers
             };
 
             await _tripLoaderRepository.AddAsync(tripLoader);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "CREATE",
+                EntityName = TripLoaderNameForAction,
+                EntityId = tripLoader.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok(tripLoader);
         }
 
@@ -90,6 +108,18 @@ namespace Logistics_Transportation.Controllers
             tripLoader.LoaderId = dto.LoaderId;
 
             await _tripLoaderRepository.UpdateAsync(tripLoader);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "PUT",
+                EntityName = TripLoaderNameForAction,
+                EntityId = tripLoader.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok("Рейс и грузчики успешно обновлены");
         }
 
@@ -104,6 +134,18 @@ namespace Logistics_Transportation.Controllers
             }
 
             await _tripLoaderRepository.DeleteAsync(tripLoader);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "DELETE",
+                EntityName = TripLoaderNameForAction,
+                EntityId = tripLoader.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok("Рейс и грузчики успешно удалены");
         }
 

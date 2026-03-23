@@ -16,6 +16,7 @@ namespace Logistics_Transportation
         public DbSet<TripLoaders> TripLoaders { get; set; } = null!;
         public DbSet<Trip> Trips { get; set; } = null!;
         public DbSet<LicenceCategories> LicenceCategories { get; set; } = null!;
+        public DbSet<ActionLog> ActionLogs { get; set; } = null!;
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

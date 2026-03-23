@@ -1,9 +1,11 @@
 ﻿using Logistics_Transportation.DTOs;
 using Logistics_Transportation.Models;
 using Logistics_Transportation.Repositories;
+using Logistics_Transportation.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Logistics_Transportation.Controllers
 {
@@ -12,9 +14,11 @@ namespace Logistics_Transportation.Controllers
     public class LoaderController : ControllerBase
     {
         private readonly ILoaderRepository _loaderRepository;
-        public LoaderController(ILoaderRepository loaderRepository)
+        private readonly IActionLogService _actionService;
+        public LoaderController(ILoaderRepository loaderRepository, IActionLogService actionService)
         {
             _loaderRepository = loaderRepository;
+            _actionService = actionService;
         }
 
         [HttpGet("all")]
@@ -49,6 +53,18 @@ namespace Logistics_Transportation.Controllers
                 Age = dto.Age
             };
             await _loaderRepository.AddAsync(loader);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "CREATE",
+                EntityName = "Loader",
+                EntityId = loader.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok(loader);
         }
 
@@ -68,6 +84,18 @@ namespace Logistics_Transportation.Controllers
 
 
             await _loaderRepository.UpdateAsync(loader);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "PUT",
+                EntityName = "Loader",
+                EntityId = loader.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok("Грузчик успешно обновлен");
         }
 
@@ -80,7 +108,20 @@ namespace Logistics_Transportation.Controllers
             {
                 return NotFound("Грузчик не найден по данному id");
             }
+
             await _loaderRepository.DeleteAsync(loader);
+
+            var actionLog = new ActionLog
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Action = "DELETE",
+                EntityName = "Loader",
+                EntityId = loader.Id,
+                CreatedTime = DateTime.UtcNow
+            };
+
+            await _actionService.LogAsync(actionLog);
+
             return Ok("Грузчик успешно удален");
         }
     }

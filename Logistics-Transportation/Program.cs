@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using Logistics_Transportation.Repositories;
+using Logistics_Transportation.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -80,6 +81,7 @@ builder.Services.AddScoped<ILicenceCategoryRepository, LicenceCategoryRepository
 builder.Services.AddScoped<ITripRepository, TripRepository>();
 builder.Services.AddScoped<ITripLoaderRepository, TripLoaderRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IActionLogService, ActionLogService>();
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
