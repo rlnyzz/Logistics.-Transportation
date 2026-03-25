@@ -82,6 +82,7 @@ builder.Services.AddScoped<ITripRepository, TripRepository>();
 builder.Services.AddScoped<ITripLoaderRepository, TripLoaderRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IActionLogService, ActionLogService>();
+builder.Services.AddScoped<ITripMLService, TripMLService>();
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>

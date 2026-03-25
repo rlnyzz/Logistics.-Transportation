@@ -15,12 +15,13 @@ namespace Logistics_Transportation.Controllers
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IActionLogService _actionService;
+        private readonly ITripMLService _tripMLService;
 
-        public OrderController(IOrderRepository orderRepository, IActionLogService actionService)
+        public OrderController(IOrderRepository orderRepository, IActionLogService actionService, ITripMLService tripMLService)
         {
             _orderRepository = orderRepository;
             _actionService = actionService;
-
+            _tripMLService = tripMLService;
         }
 
         [HttpGet("all-orders")]
@@ -88,6 +89,8 @@ namespace Logistics_Transportation.Controllers
 
             await _orderRepository.AddAsync(order);
 
+            var trip = await _tripMLService.CreateTripWithMLFunctionAsync(order);
+
             var actionLog = new ActionLog
             {
                 UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
@@ -99,7 +102,7 @@ namespace Logistics_Transportation.Controllers
 
             await _actionService.LogAsync(actionLog);
 
-            return Ok(order);
+            return Ok(new { order, trip });
         }
 
         [HttpPut("{id}")]

@@ -1,0 +1,937 @@
+description,weight,volume,result
+Fresh meat,500,3.0,Refrigerator
+Dairy products,400,2.5,Refrigerator
+Apartment furniture,800,25.0,Furniture van
+Computers and electronics,200,3.0,Small van
+Building materials (lumber),1500,12.0,Medium van
+Large home appliances,1200,15.0,Medium van
+Fragile tableware,100,3.0,Small van
+Frozen fish,700,6.0,Refrigerator
+Bottled drinks,800,10.0,Isothermal van
+Apartment moving,1200,22.0,Furniture van
+Construction sand,2000,6.0,Dump truck
+Bulk fertilizers,1800,5.0,Dump truck
+Small boxes of clothes,150,2.5,Small van
+Pallets of food,1000,16.0,Medium van
+Large sofas,900,28.0,Furniture van
+Frozen vegetables,600,5.0,Refrigerator
+Bricks,1800,8.0,Tented truck
+Garden equipment,400,7.0,Medium van
+Coffee and tea packages,300,3.0,Small van
+Small building tools,500,4.0,Small van
+Fresh poultry,520,3.5,Refrigerator
+Yogurt and cheese,430,2.8,Refrigerator
+Office desks,820,24.0,Furniture van
+Laptops,180,2.4,Small van
+Cement bags,1400,10.5,Medium van
+Washing machines,1150,14.0,Medium van
+Glassware,120,3.2,Small van
+Frozen seafood,720,6.5,Refrigerator
+Canned juices,850,11.0,Isothermal van
+Office relocation,1300,23.5,Furniture van
+Gravel,2200,7.0,Dump truck
+Potting soil,1700,5.5,Dump truck
+Shoe boxes,140,2.2,Small van
+Warehouse pallets,1050,15.5,Medium van
+Wardrobes,950,27.0,Furniture van
+Ice cream,550,4.5,Refrigerator
+Roofing tiles,1850,9.0,Tented truck
+Lawn mowers,450,7.5,Medium van
+Spices and herbs,280,2.9,Small van
+Power drills and saws,480,3.8,Small van
+Beef carcasses,510,3.2,Refrigerator
+Milk cartons,410,2.6,Refrigerator
+Bookshelves,790,26.0,Furniture van
+Smartphones,220,3.1,Small van
+Timber planks,1550,12.5,Medium van
+Refrigerators (appliances),1250,15.5,Medium van
+Ceramics,110,3.1,Small van
+Frozen berries,680,5.8,Refrigerator
+Mineral water,820,10.5,Isothermal van
+House moving,1180,21.5,Furniture van
+Crushed stone,2100,6.5,Dump truck
+Grain,1750,5.2,Dump truck
+Apparel bags,160,2.6,Small van
+Dry food pallets,1020,16.5,Medium van
+Armchairs,880,29.0,Furniture van
+Frozen pastry,620,5.2,Refrigerator
+Paving stones,1820,8.5,Tented truck
+Snow blowers,420,7.2,Medium van
+Dry snacks,320,3.2,Small van
+Hand tools,490,4.1,Small van
+Pork meat,490,3.1,Refrigerator
+Butter and cream,390,2.4,Refrigerator
+Kitchen cabinets,810,24.5,Furniture van
+Monitors,210,2.9,Small van
+Metal pipes,1450,11.5,Medium van
+Dishwashers,1180,14.5,Medium van
+Porcelain,130,3.3,Small van
+Frozen shrimp,710,6.2,Refrigerator
+Carbonated drinks,830,10.2,Isothermal van
+Villa moving,1250,23.0,Furniture van
+Clay,1950,6.2,Dump truck
+Peat,1650,5.1,Dump truck
+T-shirts in boxes,145,2.3,Small van
+Product displays,980,14.8,Medium van
+Beds and mattresses,920,27.5,Furniture van
+Frozen pizzas,580,4.8,Refrigerator
+Steel sheets,1880,8.8,Tented truck
+Chainsaws,430,7.1,Medium van
+Tea boxes,290,2.8,Small van
+Paint buckets,470,3.7,Small van
+Lamb meat,530,3.4,Refrigerator
+Cheese wheels,440,2.7,Refrigerator
+Dining tables,830,25.5,Furniture van
+Tablets,190,2.7,Small van
+Drywall sheets,1520,12.2,Medium van
+Ovens and stoves,1220,15.2,Medium van
+Crystal glasses,115,3.0,Small van
+Frozen french fries,690,5.9,Refrigerator
+Energy drinks,810,10.8,Isothermal van
+Storage moving,1220,22.5,Furniture van
+Asphalt rubble,2050,6.4,Dump truck
+Sand bags,1720,5.4,Dump truck
+Jeans in cartons,155,2.7,Small van
+Retail stock,1030,16.2,Medium van
+Drawers,910,28.5,Furniture van
+Ice bags,590,4.9,Refrigerator
+Fencing materials,1840,8.7,Tented truck
+Cultivators,460,7.4,Medium van
+Confectionery,310,3.1,Small van
+Plumbing tools,460,3.9,Small van
+Sausages,480,3.3,Refrigerator
+Kefir and sour cream,420,2.5,Refrigerator
+Living room sets,840,24.8,Furniture van
+PC components,205,3.1,Small van
+Scaffolding,1480,11.8,Medium van
+Microwaves and dryers,1190,14.8,Medium van
+Art statues,125,3.4,Small van
+Frozen dough,670,5.7,Refrigerator
+Juices in glass,840,10.4,Isothermal van
+Dorm moving,1190,21.8,Furniture van
+Black soil,1980,6.1,Dump truck
+Sawdust,1680,5.3,Dump truck
+Hats and scarves,135,2.1,Small van
+Canned vegetables,1010,15.8,Medium van
+Dressers,930,27.8,Furniture van
+Deep frozen meat,570,4.7,Refrigerator
+Construction mesh,1860,8.6,Tented truck
+Generators,470,7.6,Medium van
+Biscuits,295,3.0,Small van
+Auto repair kits,485,4.0,Small van
+Veal,540,3.6,Refrigerator
+Cottage cheese,435,2.6,Refrigerator
+Bedroom furniture,850,25.2,Furniture van
+Cables and wires,195,2.8,Small van
+Plywood,1540,12.4,Medium van
+Air conditioners,1210,15.1,Medium van
+Vases,118,3.2,Small van
+Frozen fish fillets,730,6.4,Refrigerator
+Beer kegs,860,11.2,Isothermal van
+Shop relocation,1280,23.2,Furniture van
+Pebbles,2150,6.8,Dump truck
+Wood chips,1710,5.6,Dump truck
+Socks in bulk,130,2.4,Small van
+Hypermarket delivery,1040,16.1,Medium van
+Sectional sofas,940,28.2,Furniture van
+Frozen fruits,610,5.1,Refrigerator
+Coils of wire,1830,8.4,Tented truck
+Tractors (small),480,7.8,Medium van
+Dry pasta,305,3.3,Small van
+Measuring devices,475,3.8,Small van
+Minced meat,470,3.0,Refrigerator
+Condensed milk,415,2.4,Refrigerator
+Nursery furniture,815,24.2,Furniture van
+Audio speakers,215,3.2,Small van
+Insulation rolls,1430,11.2,Medium van
+Deep freezers,1170,14.2,Medium van
+Lab glassware,122,3.3,Small van
+Frozen squid,705,6.1,Refrigerator
+Wine bottles,835,10.3,Isothermal van
+Penthouse moving,1260,23.1,Furniture van
+Limestone,2020,6.3,Dump truck
+Compost,1690,5.2,Dump truck
+Children clothes,142,2.5,Small van
+B2B supplies,990,14.9,Medium van
+Nightstands,895,27.2,Furniture van
+Frozen nuggets,560,4.6,Refrigerator
+Metal profiles,1870,8.9,Tented truck
+Compressors,440,7.3,Medium van
+Chocolate boxes,315,3.1,Small van
+Electrician tools,455,3.7,Small van
+Turkey meat,550,3.5,Refrigerator
+Margarine,425,2.7,Refrigerator
+Office chairs,825,25.6,Furniture van
+Projectors,185,2.6,Small van
+Ceramic tiles,1560,12.6,Medium van
+Home theaters,1230,15.3,Medium van
+Window panes,135,3.5,Small van
+Frozen crab,740,6.6,Refrigerator
+Soda cans,815,10.7,Isothermal van
+Studio moving,1210,22.4,Furniture van
+Granite chips,2180,6.9,Dump truck
+Mulch,1730,5.7,Dump truck
+Winter jackets,160,2.8,Small van
+Hardware store restock,1060,16.4,Medium van
+Bookcases,925,28.6,Furniture van
+Frozen desserts,630,5.3,Refrigerator
+Wood pellets,1810,8.3,Tented truck
+Water pumps,490,7.7,Medium van
+Cereals,325,3.2,Small van
+Carpentry tools,465,3.9,Small van
+Smoked meat,460,3.2,Refrigerator
+Heavy cream,405,2.3,Refrigerator
+Bar stools,780,24.1,Furniture van
+Printers,225,3.3,Small van
+Bricks in pallets,1490,11.9,Medium van
+Vacuum cleaners,1140,14.1,Medium van
+Light bulbs,105,3.1,Small van
+Frozen mushrooms,660,5.6,Refrigerator
+Ice tea bottles,845,10.6,Isothermal van
+Cafe relocation,1240,22.9,Furniture van
+Shale,1970,6.0,Dump truck
+Peat moss,1660,5.0,Dump truck
+Underwear boxes,125,2.2,Small van
+Commercial cargo,1025,15.9,Medium van
+Closets,935,27.9,Furniture van
+Frozen pancakes,540,4.4,Refrigerator
+Reinforcement bars,1890,8.8,Tented truck
+Pressure washers,435,7.2,Medium van
+Sweets,300,2.9,Small van
+Welding machines,495,4.1,Small van
+Duck meat,535,3.3,Refrigerator
+Fermented milk,432,2.8,Refrigerator
+Cabinets,832,25.7,Furniture van
+Gaming consoles,192,2.8,Small van
+Roofing sheets,1530,12.3,Medium van
+Cooking ranges,1222,15.4,Medium van
+Lamps and shades,128,3.3,Small van
+Frozen corn,692,5.8,Refrigerator
+Mineral water pallets,825,10.9,Isothermal van
+New flat moving,1225,22.7,Furniture van
+Crushed concrete,2060,6.5,Dump truck
+Manure,1715,5.4,Dump truck
+Blankets and pillows,148,2.7,Small van
+Industrial equipment,1035,16.3,Medium van
+Large tables,915,28.4,Furniture van
+Ice cream tubs,585,4.8,Refrigerator
+Canvas tents,1845,8.6,Tented truck
+Heat guns,455,7.5,Medium van
+Flour sacks,312,3.0,Small van
+Pneumatic tools,472,4.0,Small van
+Bacon slabs,485,3.1,Refrigerator
+Whey products,412,2.5,Refrigerator
+Outdoor furniture,842,24.9,Furniture van
+Network routers,202,3.0,Small van
+Floorboards,1485,11.7,Medium van
+Hoods and vents,1185,14.7,Medium van
+Mirrors,124,3.4,Small van
+Frozen peas,675,5.7,Refrigerator
+Juice bottles,838,10.5,Isothermal van
+Office move out,1255,23.3,Furniture van
+Sandstone,2015,6.2,Dump truck
+Loam,1685,5.3,Dump truck
+Summer clothes,132,2.1,Small van
+Mixed goods,1015,15.7,Medium van
+Drawers units,928,27.7,Furniture van
+Deep frozen fish,575,4.8,Refrigerator
+Steel wire,1865,8.5,Tented truck
+Boilers,472,7.6,Medium van
+Sugar packets,302,3.1,Small van
+Repair toolboxes,482,3.9,Small van
+Beef steaks,542,3.5,Refrigerator
+Sour cream tubs,438,2.7,Refrigerator
+Patio sets,852,25.3,Furniture van
+Smart TVs,222,3.4,Small van
+Plasterboards,1545,12.5,Medium van
+Electric radiators,1215,15.2,Medium van
+Frames and art,120,3.2,Small van
+Frozen berries mix,732,6.5,Refrigerator
+Ale kegs,858,11.1,Isothermal van
+Retail shop moving,1285,23.3,Furniture van
+Ballast,2145,6.7,Dump truck
+Bark mulch,1705,5.5,Dump truck
+Sportswear,135,2.3,Small van
+Retail shipment,1045,16.2,Medium van
+Corner sofas,942,28.3,Furniture van
+Frozen broccoli,615,5.2,Refrigerator
+Metal cables,1835,8.3,Tented truck
+Wood splitters,482,7.9,Medium van
+Rice bags,308,3.2,Small van
+Laser levels,478,3.7,Small van
+Pork chops,475,3.2,Refrigerator
+Condensed cream,418,2.4,Refrigerator
+Kids wardrobes,818,24.3,Furniture van
+Sound systems,218,3.1,Small van
+Mineral wool,1435,11.3,Medium van
+Chest freezers,1175,14.3,Medium van
+Beakers and flasks,121,3.2,Small van
+Frozen prawns,702,6.2,Refrigerator
+Cider bottles,838,10.4,Isothermal van
+Cottage moving,1265,23.2,Furniture van
+Chalk,2025,6.4,Dump truck
+Humus,1695,5.1,Dump truck
+Baby clothes,145,2.4,Small van
+B2B parcels,985,14.7,Medium van
+Sideboards,898,27.3,Furniture van
+Frozen nuggets box,565,4.7,Refrigerator
+Iron beams,1875,8.8,Tented truck
+Air compressors,445,7.4,Medium van
+Candy packs,318,3.0,Small van
+Multimeters,458,3.6,Small van
+Chicken breasts,552,3.4,Refrigerator
+Margarine blocks,428,2.6,Refrigerator
+Swivel chairs,828,25.4,Furniture van
+E-readers,188,2.5,Small van
+Wall tiles,1565,12.7,Medium van
+Soundbars,1235,15.4,Medium van
+Stained glass,132,3.4,Small van
+Frozen lobster,742,6.7,Refrigerator
+Tonic water,818,10.8,Isothermal van
+Loft moving,1215,22.5,Furniture van
+Granite dust,2185,6.8,Dump truck
+Soil bags,1735,5.8,Dump truck
+Raincoats,158,2.7,Small van
+Department store stock,1065,16.5,Medium van
+Shelving units,928,28.7,Furniture van
+Frozen yogurt,635,5.4,Refrigerator
+Wood briquettes,1815,8.4,Tented truck
+Circulation pumps,488,7.8,Medium van
+Oatmeal,328,3.3,Small van
+Screwdrivers set,468,3.8,Small van
+Ham,465,3.3,Refrigerator
+Buttermilk,408,2.4,Refrigerator
+Stools and poufs,785,24.2,Furniture van
+Copiers,228,3.4,Small van
+Cinder blocks,1495,11.8,Medium van
+Steam cleaners,1145,14.2,Medium van
+LED strips,108,3.0,Small van
+Frozen mushrooms mix,665,5.5,Refrigerator
+Cold tea,848,10.7,Isothermal van
+Restaurant moving,1245,22.8,Furniture van
+Silt,1975,6.1,Dump truck
+Potting earth,1665,5.1,Dump truck
+Socks boxes,128,2.3,Small van
+Commercial freight,1028,15.8,Medium van
+Tall wardrobes,938,27.8,Furniture van
+Frozen waffles,545,4.5,Refrigerator
+Steel gratings,1895,8.9,Tented truck
+High pressure washers,438,7.3,Medium van
+Lollipops,302,2.8,Small van
+Arc welders,498,4.2,Small van
+Goose meat,538,3.4,Refrigerator
+Fermented cream,434,2.9,Refrigerator
+Filing cabinets,834,25.8,Furniture van
+Handheld consoles,194,2.7,Small van
+Roofing tiles pack,1535,12.4,Medium van
+Electric stoves,1225,15.5,Medium van
+Lamps,126,3.2,Small van
+Frozen sweetcorn,695,5.9,Refrigerator
+Water pallets,828,11.0,Isothermal van
+Relocation boxes,1228,22.8,Furniture van
+Rubble stone,2065,6.6,Dump truck
+Organic fertilizer,1718,5.5,Dump truck
+Quilts and linens,146,2.6,Small van
+Industrial parts,1038,16.4,Medium van
+Conference tables,918,28.5,Furniture van
+Popsicles,588,4.9,Refrigerator
+Awnings,1848,8.7,Tented truck
+Industrial heaters,458,7.6,Medium van
+Pasta boxes,315,3.1,Small van
+Wrenches,475,4.1,Small van
+Smoked bacon,488,3.2,Refrigerator
+Lactose free milk,415,2.6,Refrigerator
+Garden chairs,845,24.8,Furniture van
+WiFi adapters,205,3.1,Small van
+Parquet boards,1488,11.8,Medium van
+Kitchen hoods,1188,14.8,Medium van
+Wall mirrors,126,3.5,Small van
+Frozen spinach,678,5.8,Refrigerator
+Juice cartons,842,10.6,Isothermal van
+Office furniture moving,1258,23.4,Furniture van
+Limestone gravel,2018,6.3,Dump truck
+Topsoil,1688,5.4,Dump truck
+Trousers,134,2.2,Small van
+Mixed cargo,1018,15.8,Medium van
+Chests,926,27.8,Furniture van
+Deep frozen poultry,578,4.9,Refrigerator
+Barbed wire,1868,8.6,Tented truck
+Electric boilers,475,7.7,Medium van
+Sugar bags,305,3.2,Small van
+Hand toolsets,485,4.0,Small van
+Veal steaks,545,3.6,Refrigerator
+Sour cream tubs 5kg,436,2.8,Refrigerator
+Lounge furniture,855,25.4,Furniture van
+Curved TVs,225,3.5,Small van
+Drywall panels,1548,12.6,Medium van
+Oil heaters,1218,15.3,Medium van
+Paintings,122,3.3,Small van
+Frozen raspberries,735,6.6,Refrigerator
+Stout kegs,856,11.2,Isothermal van
+Stock transfer,1288,23.4,Furniture van
+Crushed granite,2148,6.8,Dump truck
+Bark chips,1708,5.6,Dump truck
+Tracksuits,138,2.4,Small van
+Consolidated shipment,1048,16.3,Medium van
+U shaped sofas,945,28.4,Furniture van
+Frozen cauliflower,618,5.3,Refrigerator
+Steel ropes,1838,8.4,Tented truck
+Stump grinders,485,7.8,Medium van
+Buckwheat bags,306,3.1,Small van
+Rotary hammers,482,3.8,Small van
+Pork ribs,478,3.3,Refrigerator
+Evaporated milk,416,2.5,Refrigerator
+Bunk beds,816,24.4,Furniture van
+HiFi speakers,216,3.2,Small van
+Rockwool slabs,1438,11.4,Medium van
+Upright freezers,1178,14.4,Medium van
+Test tubes,124,3.3,Small van
+Frozen scampi,704,6.3,Refrigerator
+Craft beer,836,10.5,Isothermal van
+Moving service,1268,23.3,Furniture van
+Slate,2028,6.5,Dump truck
+Planting soil,1698,5.2,Dump truck
+Kids shoes,146,2.5,Small van
+Express parcels,988,14.8,Medium van
+Display cabinets,896,27.4,Furniture van
+Frozen meat patties,568,4.8,Refrigerator
+Steel channels,1878,8.9,Tented truck
+Reciprocating saws,448,7.5,Medium van
+Gum packs,316,3.1,Small van
+Voltage testers,456,3.7,Small van
+Chicken legs,554,3.5,Refrigerator
+Soft cheese,426,2.7,Refrigerator
+Gaming chairs,826,25.5,Furniture van
+Kindles,191,2.6,Small van
+Porcelain tiles,1568,12.8,Medium van
+Sound systems large,1238,15.5,Medium van
+Glass ornaments,134,3.5,Small van
+Frozen crab meat,744,6.8,Refrigerator
+Flavored water,816,10.9,Isothermal van
+Flat moving,1218,22.6,Furniture van
+Asphalt chips,2188,6.9,Dump truck
+Potting mix,1738,5.9,Dump truck
+Hoodies,156,2.8,Small van
+Retail inventory,1068,16.6,Medium van
+Fitted wardrobes,926,28.8,Furniture van
+Frozen desserts tubs,638,5.5,Refrigerator
+Bio fuel pellets,1818,8.5,Tented truck
+Submersible pumps,486,7.9,Medium van
+Muesli,326,3.4,Small van
+Spanners set,466,3.9,Small van
+Salami,468,3.4,Refrigerator
+Cream cheese,406,2.5,Refrigerator
+Bean bags,786,24.3,Furniture van
+Scanners,226,3.5,Small van
+Concrete pavers,1498,11.9,Medium van
+Carpet cleaners,1148,14.3,Medium van
+Fairy lights,106,3.1,Small van
+Frozen mushrooms mix bag,668,5.6,Refrigerator
+Ice coffee,846,10.8,Isothermal van
+Bistro moving,1248,22.9,Furniture van
+Mud,1978,6.2,Dump truck
+Turf,1668,5.2,Dump truck
+Gloves boxes,126,2.4,Small van
+Commercial palettes,1026,15.9,Medium van
+Walk in closets,936,27.9,Furniture van
+Frozen pancakes pack,548,4.6,Refrigerator
+Wire mesh,1898,8.8,Tented truck
+Electric pressure washers,436,7.4,Medium van
+Fruit drops,304,2.9,Small van
+Plasma cutters,496,4.3,Small van
+Pheasant meat,536,3.5,Refrigerator
+Sour cream tubs 1kg,435,2.9,Refrigerator
+Drawer cabinets,835,25.9,Furniture van
+Gamepads,196,2.8,Small van
+Roofing membranes,1536,12.5,Medium van
+Induction hobs,1226,15.6,Medium van
+Lampshades,124,3.3,Small van
+Frozen baby corn,696,6.0,Refrigerator
+Soft drinks,826,11.1,Isothermal van
+Moving boxes,1226,22.9,Furniture van
+Flagstones,2068,6.7,Dump truck
+Garden compost,1716,5.6,Dump truck
+Pillows,144,2.7,Small van
+Heavy machinery parts,1036,16.5,Medium van
+Boardroom tables,916,28.6,Furniture van
+Fruit pops,586,5.0,Refrigerator
+Tarpaulins,1846,8.8,Tented truck
+Duct heaters,456,7.7,Medium van
+Pasta packages,316,3.2,Small van
+Sockets,476,4.2,Small van
+Prosciutto,486,3.3,Refrigerator
+Condensed milk cans,416,2.7,Refrigerator
+Rattan furniture,846,24.7,Furniture van
+Switches and routers,206,3.2,Small van
+Laminate flooring,1486,11.9,Medium van
+Exhaust fans,1186,14.9,Medium van
+Glass shelves,128,3.6,Small van
+Frozen mixed veg,676,5.9,Refrigerator
+Juices,844,10.7,Isothermal van
+Office furniture relocation,1256,23.5,Furniture van
+Dolomite,2016,6.4,Dump truck
+Loamy soil,1686,5.5,Dump truck
+Shirts,136,2.3,Small van
+General cargo,1016,15.9,Medium van
+Side drawers,924,27.9,Furniture van
+Deep frozen turkey,576,5.0,Refrigerator
+Fence wire,1866,8.7,Tented truck
+Gas boilers,476,7.8,Medium van
+Salt bags,306,3.3,Small van
+Hand saws,486,4.1,Small van
+Venison,546,3.7,Refrigerator
+Cranberry juice,438,2.9,Refrigerator
+Sectional furniture,856,25.5,Furniture van
+Curved monitors,226,3.6,Small van
+Plaster panels,1546,12.7,Medium van
+Space heaters,1216,15.4,Medium van
+Drawings,124,3.4,Small van
+Frozen blueberries,736,6.7,Refrigerator
+Lager kegs,854,11.3,Isothermal van
+Warehouse transfer,1286,23.5,Furniture van
+Iron ore,2146,6.9,Dump truck
+Pine bark,1706,5.7,Dump truck
+Hoodies bulk,136,2.5,Small van
+Freight pallet,1046,16.4,Medium van
+Sofas,946,28.5,Furniture van
+Frozen peas pack,616,5.4,Refrigerator
+Chains,1836,8.5,Tented truck
+Wood chippers,486,7.9,Medium van
+Barley bags,304,3.2,Small van
+Impact drivers,484,3.9,Small van
+Pork loins,476,3.4,Refrigerator
+Flavored milk,414,2.6,Refrigerator
+Kids beds,814,24.5,Furniture van
+Sound equipment,214,3.3,Small van
+Fiberglass insulation,1436,11.5,Medium van
+Chest freezers retail,1176,14.5,Medium van
+Flasks,126,3.4,Small van
+Frozen prawns pack,706,6.4,Refrigerator
+Craft cider,834,10.6,Isothermal van
+Home moving,1264,23.4,Furniture van
+Talc,2024,6.6,Dump truck
+Mulch earth,1694,5.3,Dump truck
+Baby shoes,144,2.6,Small van
+Parcels,984,14.9,Medium van
+Cabinets for displays,894,27.5,Furniture van
+Frozen patties,564,4.9,Refrigerator
+Iron pipes,1874,8.9,Tented truck
+Circular saws,444,7.6,Medium van
+Chewing gums,314,3.2,Small van
+Ammeters,454,3.8,Small van
+Chicken wings,556,3.6,Refrigerator
+Hard cheese,424,2.8,Refrigerator
+Stools,824,25.6,Furniture van
+Tablets bundle,194,2.7,Small van
+Mosaic tiles,1564,12.9,Medium van
+Amplifiers,1234,15.6,Medium van
+Glass bottles,136,3.6,Small van
+Frozen fish boxes,746,6.9,Refrigerator
+Sparkling water,814,11.0,Isothermal van
+Flat relocation,1214,22.7,Furniture van
+Crushed gravel,2184,7.0,Dump truck
+Garden soil bags,1734,6.0,Dump truck
+Sweaters,154,2.9,Small van
+Supermarket restock,1064,16.7,Medium van
+Wardrobe sets,924,28.9,Furniture van
+Frozen ice cream,634,5.6,Refrigerator
+Wood chips fuel,1814,8.6,Tented truck
+Water pumps large,484,8.0,Medium van
+Oats,324,3.5,Small van
+Wrench sets,464,4.0,Small van
+Bacon,464,3.5,Refrigerator
+Yogurt tubs,404,2.6,Refrigerator
+Puffs,784,24.4,Furniture van
+All in one PCs,224,3.6,Small van
+Concrete curbs,1494,12.0,Medium van
+Upholstery cleaners,1144,14.4,Medium van
+Bulbs,104,3.2,Small van
+Frozen spinach pack,664,5.7,Refrigerator
+Ice tea,844,10.9,Isothermal van
+Restaurant relocation,1244,23.0,Furniture van
+Clay soil,1974,6.3,Dump truck
+Peat earth,1664,5.3,Dump truck
+Gloves,124,2.5,Small van
+Euro pallets,1024,16.0,Medium van
+Fitted closets,934,28.0,Furniture van
+Frozen waffles pack,544,4.7,Refrigerator
+Steel mesh,1894,8.9,Tented truck
+Washers,434,7.5,Medium van
+Candies,306,3.0,Small van
+Inverter welders,494,4.4,Small van
+Rabbit meat,534,3.6,Refrigerator
+Yogurt drinks,436,3.0,Refrigerator
+Storage cabinets,836,25.9,Furniture van
+Mice and keyboards,198,2.9,Small van
+Shingles,1534,12.6,Medium van
+Halogen hobs,1224,15.7,Medium van
+Table lamps,122,3.4,Small van
+Frozen peas bulk,694,6.1,Refrigerator
+Lemonade,824,11.2,Isothermal van
+Furniture boxes,1224,23.0,Furniture van
+Boulders,2064,6.8,Dump truck
+Cow manure,1714,5.7,Dump truck
+Bed sheets,142,2.8,Small van
+Spare parts,1034,16.6,Medium van
+Meeting tables,914,28.7,Furniture van
+Ice lollies,584,5.1,Refrigerator
+Protective covers,1844,8.9,Tented truck
+Fan heaters,454,7.8,Medium van
+Noodles,314,3.3,Small van
+Pliers,474,4.3,Small van
+fresh meat,400,4,Refrigerator
+meat products,500,8,Refrigerator
+fish and seafood,300,6,Refrigerator
+fresh vegetables,200,5,Refrigerator
+perishable food,600,10,Refrigerator
+cold chain cargo,400,7,Refrigerator
+chilled products,300,5,Refrigerator
+frozen meat,500,9,Refrigerator
+Meat,300,5,Refrigerator
+Chicken,350,5.5,Refrigerator
+Frozen salmon fillets,400,6,Refrigerator
+Frozen cod,500,6.5,Refrigerator
+Fresh vegetables,250,4.5,Refrigerator
+Frozen mixed berries,420,5.2,Refrigerator
+Small electronics bundle,180,2.5,Small van
+Office chairs set,820,25,Furniture van
+Kitchen appliances,1200,15,Medium van
+Construction gravel,2000,6,Dump truck
+Plywood sheets,1550,12.5,Medium van
+Beverage crates,800,10.5,Isothermal van
+Frozen pizza pack,600,5,Refrigerator
+Baby clothes boxes,150,2.5,Small van
+Large sofa set,950,28,Furniture van
+Frozen vegetables pack,580,5.1,Refrigerator
+Frozen seafood pack,700,6.5,Refrigerator
+Meat products box,500,5.2,Refrigerator
+Perishable fruits,300,4.8,Refrigerator
+Cold chain cargo,400,6,Refrigerator
+Chilled dairy,350,5.5,Refrigerator
+Small office supplies,200,2.5,Small van
+Laptop boxes,180,2.4,Small van
+Kitchen utensils,150,2.6,Small van
+Wardrobe set,950,27,Furniture van
+Dining table set,830,25.5,Furniture van
+Washing machines,1150,14.5,Medium van
+Cement bags,1400,10.5,Medium van
+Bricks pack,1800,8.5,Tented truck
+Sandbags,1720,5.4,Dump truck
+Frozen shrimp pack,710,6.2,Refrigerator
+Frozen fish fillets,730,6.4,Refrigerator
+Frozen mixed vegetables,620,5.2,Refrigerator
+Frozen berries mix,732,6.5,Refrigerator
+Frozen desserts tubs,638,5.5,Refrigerator
+Frozen waffles pack,544,4.7,Refrigerator
+Frozen ice cream,634,5.6,Refrigerator
+Frozen pancakes pack,548,4.6,Refrigerator
+Frozen baby corn,696,6,Refrigerator
+Frozen sweetcorn,695,5.9,Refrigerator
+Frozen cauliflower,618,5.3,Refrigerator
+Frozen peas bulk,694,6.1,Refrigerator
+Frozen peas pack,616,5.4,Refrigerator
+Frozen mixed veg,676,5.9,Refrigerator
+Frozen blueberries,736,6.7,Refrigerator
+Frozen raspberries,735,6.6,Refrigerator
+Frozen lobster,742,6.7,Refrigerator
+Frozen crab,740,6.6,Refrigerator
+Frozen crab meat,744,6.8,Refrigerator
+Frozen prawns,702,6.2,Refrigerator
+Frozen prawns pack,706,6.4,Refrigerator
+Frozen scampi,704,6.3,Refrigerator
+Frozen patties,564,4.9,Refrigerator
+Frozen meat patties,568,4.8,Refrigerator
+Frozen pizza,580,4.8,Refrigerator
+Frozen nuggets,560,4.6,Refrigerator
+Frozen nuggets box,565,4.7,Refrigerator
+Frozen pancakes,540,4.4,Refrigerator
+Frozen desserts,630,5.3,Refrigerator
+Frozen spinach,678,5.8,Refrigerator
+Frozen spinach pack,664,5.7,Refrigerator
+Frozen french fries,690,5.9,Refrigerator
+Frozen fruits,610,5.1,Refrigerator
+Frozen mixed berries,732,6.5,Refrigerator
+Frozen mushrooms,660,5.6,Refrigerator
+Frozen mushrooms mix bag,668,5.6,Refrigerator
+Frozen mushrooms mix,665,5.5,Refrigerator
+Frozen corn,692,5.8,Refrigerator
+Frozen sweetcorn,695,5.9,Refrigerator
+Frozen baby corn,696,6.0,Refrigerator
+Frozen blueberries,736,6.7,Refrigerator
+Frozen raspberries,735,6.6,Refrigerator
+Frozen lobster,742,6.7,Refrigerator
+Frozen crab meat,744,6.8,Refrigerator
+Frozen turkey,580,5.5,Refrigerator
+Frozen chicken breasts,560,5.0,Refrigerator
+Frozen salmon,620,6.0,Refrigerator
+Frozen cod fillets,610,5.8,Refrigerator
+Frozen squid,705,6.1,Refrigerator
+Frozen shrimp,710,6.3,Refrigerator
+Frozen prawns,700,6.2,Refrigerator
+Frozen mixed fish,715,6.4,Refrigerator
+Frozen vegetables mix,625,5.5,Refrigerator
+Frozen peas,600,5.2,Refrigerator
+Frozen corn kernels,680,5.8,Refrigerator
+Frozen cauliflower,618,5.3,Refrigerator
+Frozen broccoli,615,5.2,Refrigerator
+Frozen berries,650,5.5,Refrigerator
+Frozen strawberries,640,5.3,Refrigerator
+Frozen raspberries,635,5.2,Refrigerator
+Frozen blueberries,632,5.2,Refrigerator
+Frozen dessert tubs,638,5.5,Refrigerator
+Frozen waffles pack,544,4.7,Refrigerator
+Frozen ice cream tubs,634,5.6,Refrigerator
+Beef steaks,540,3.5,Refrigerator
+Pork chops,475,3.2,Refrigerator
+Lamb meat,530,3.4,Refrigerator
+Chicken legs,554,3.5,Refrigerator
+Duck meat,535,3.3,Refrigerator
+Veal,540,3.6,Refrigerator
+Frozen meat patties,568,4.8,Refrigerator
+Frozen nuggets,560,4.6,Refrigerator
+Cheese wheels,440,2.7,Refrigerator
+Yogurt tubs,404,2.6,Refrigerator
+Cottage cheese,435,2.6,Refrigerator
+Butter blocks,425,2.7,Refrigerator
+Milk cartons,410,2.6,Refrigerator
+Kefir bottles,420,2.5,Refrigerator
+Fresh vegetables,200,5,Refrigerator
+Fresh fruits,250,4.5,Refrigerator
+Frozen mixed fruits,610,5.1,Refrigerator
+Ice cream tubs,585,4.8,Refrigerator
+Frozen pizza,580,4.8,Refrigerator
+Frozen pancakes,548,4.6,Refrigerator
+Frozen desserts,630,5.3,Refrigerator
+Frozen corn,692,5.8,Refrigerator
+Frozen peas bulk,694,6.1,Refrigerator
+Frozen seafood mix,720,6.5,Refrigerator
+Frozen lobsters,742,6.7,Refrigerator
+Small electronics set,190,2.7,Small van
+Laptop boxes,185,2.5,Small van
+Smartphones,220,3.1,Small van
+Tablets,190,2.7,Small van
+Monitors,210,2.9,Small van
+Gaming consoles,192,2.8,Small van
+Audio speakers,215,3.2,Small van
+PC components,205,3.1,Small van
+Handheld consoles,194,2.7,Small van
+Network routers,202,3.0,Small van
+Projectors,185,2.6,Small van
+Electric tools set,450,3.7,Small van
+Power drills,480,3.8,Small van
+Screwdrivers set,468,3.8,Small van
+Wrenches,475,4.1,Small van
+Pliers,474,4.3,Small van
+Measuring devices,475,3.8,Small van
+Voltage testers,456,3.7,Small van
+Multimeters,458,3.6,Small van
+Flasks and beakers,126,3.4,Small van
+Lab glassware,122,3.3,Small van
+Glassware set,120,3.2,Small van
+Porcelain set,130,3.3,Small van
+Ceramic tiles,1568,12.8,Medium van
+Wall tiles,1565,12.7,Medium van
+Plywood sheets,1540,12.4,Medium van
+Timber planks,1550,12.5,Medium van
+Drywall sheets,1520,12.2,Medium van
+Cement bags,1400,10.5,Medium van
+Metal pipes,1450,11.5,Medium van
+Roofing sheets,1530,12.3,Medium van
+Insulation rolls,1430,11.2,Medium van
+Electric radiators,1215,15.2,Medium van
+Ovens and stoves,1220,15.2,Medium van
+Refrigerators,1250,15.5,Medium van
+Washing machines,1150,14.0,Medium van
+Dishwashers,1180,14.5,Medium van
+Dry food pallets,1020,16.5,Medium van
+Retail stock,1030,16.2,Medium van
+B2B parcels,985,14.7,Medium van
+Freight pallet,1046,16.4,Medium van
+Industrial equipment,1035,16.3,Medium van
+Commercial pallets,1026,15.9,Medium van
+Supermarket restock,1064,16.7,Medium van
+Mineral water pallets,825,10.9,Isothermal van
+Bottled drinks,800,10.0,Isothermal van
+Canned juices,850,11.0,Isothermal van
+Juice bottles,838,10.4,Isothermal van
+Beer kegs,860,11.2,Isothermal van
+Ale kegs,858,11.1,Isothermal van
+Soft drinks,826,11.1,Isothermal van
+Juices,844,10.7,Isothermal van
+Ice tea,844,10.9,Isothermal van
+Flavored water,816,10.9,Isothermal van
+Apartment furniture,800,25,Furniture van
+Large sofas,900,28,Furniture van
+Beds and mattresses,920,27.5,Furniture van
+Dining tables,830,25.5,Furniture van
+Office desks,820,24,Furniture van
+Wardrobes,950,27,Furniture van
+Storage cabinets,836,25.9,Furniture van
+Bookcases,925,28.6,Furniture van
+Cabinets for displays,894,27.5,Furniture van
+Chests,926,27.8,Furniture van
+Sideboards,898,27.3,Furniture van
+Coffee tables,780,24,Furniture van
+TV stands,785,24.2,Furniture van
+Office chairs,825,25.6,Furniture van
+Swivel chairs,828,25.4,Furniture van
+Sectional sofas,942,28.2,Furniture van
+U shaped sofas,945,28.4,Furniture van
+Corner sofas,942,28.3,Furniture van
+Fitted wardrobes,926,28.8,Furniture van
+Wardrobe sets,924,28.9,Furniture van
+Meat,300,5,Refrigerator
+Meat,1200,12,Refrigerator
+Meat,1800,18,Refrigerator
+Fresh meat,400,4,Refrigerator
+Fresh meat,1500,15,Refrigerator
+Frozen meat,600,6,Refrigerator
+Frozen meat,1700,17,Refrigerator
+Beef,350,4,Refrigerator
+Beef,1400,14,Refrigerator
+Pork,320,4.5,Refrigerator
+Pork,1600,16,Refrigerator
+Chicken,280,4,Refrigerator
+Chicken,1300,13,Refrigerator
+Turkey,500,6,Refrigerator
+Turkey,1500,16,Refrigerator
+Fish,300,5,Refrigerator
+Fish,1200,12,Refrigerator
+Frozen fish,700,6,Refrigerator
+Frozen fish,1800,18,Refrigerator
+Seafood,450,5,Refrigerator
+Seafood,1600,15,Refrigerator
+Shrimp,400,5.5,Refrigerator
+Shrimp,1500,14,Refrigerator
+Salmon,420,5.2,Refrigerator
+Salmon,1450,14,Refrigerator
+Dairy products,400,2.5,Refrigerator
+Dairy products,1200,10,Refrigerator
+Milk,350,3,Refrigerator
+Milk,1400,11,Refrigerator
+Cheese,300,2.5,Refrigerator
+Cheese,1300,10,Refrigerator
+Yogurt,280,2.2,Refrigerator
+Yogurt,1250,9.5,Refrigerator
+Butter,260,2.1,Refrigerator
+Butter,1200,9,Refrigerator
+Cream,270,2.3,Refrigerator
+Cream,1100,9,Refrigerator
+Ice cream,500,5,Refrigerator
+Ice cream,1400,13,Refrigerator
+Frozen desserts,600,5.5,Refrigerator
+Frozen desserts,1500,14,Refrigerator
+Frozen vegetables,550,5,Refrigerator
+Frozen vegetables,1600,15,Refrigerator
+Frozen fruits,580,5.2,Refrigerator
+Frozen fruits,1700,16,Refrigerator
+Vegetables,200,5,Refrigerator
+Vegetables,1200,12,Refrigerator
+Fruits,250,4.5,Refrigerator
+Fruits,1300,13,Refrigerator
+Apples,220,4,Refrigerator
+Apples,1400,14,Refrigerator
+Bananas,240,4.2,Refrigerator
+Bananas,1350,13,Refrigerator
+Berries,260,4.5,Refrigerator
+Berries,1500,15,Refrigerator
+Frozen berries,600,5.5,Refrigerator
+Frozen berries,1700,17,Refrigerator
+Groceries,300,6,Refrigerator
+Groceries,1500,18,Refrigerator
+Food products,400,7,Refrigerator
+Food products,1600,19,Refrigerator
+Perishable food,500,8,Refrigerator
+Perishable food,1700,20,Refrigerator
+Chilled food,450,7,Refrigerator
+Chilled food,1550,18,Refrigerator
+Cold chain cargo,420,6,Refrigerator
+Cold chain cargo,1650,19,Refrigerator
+Ready meals,380,5,Refrigerator
+Ready meals,1400,14,Refrigerator
+Frozen pizza,600,6,Refrigerator
+Frozen pizza,1600,16,Refrigerator
+Frozen snacks,550,5,Refrigerator
+Frozen snacks,1500,15,Refrigerator
+Frozen meat products,620,6,Refrigerator
+Frozen meat products,1700,17,Refrigerator
+Fish fillets,500,5.5,Refrigerator
+Fish fillets,1450,14,Refrigerator
+Chicken fillets,480,5,Refrigerator
+Chicken fillets,1400,13,Refrigerator
+Beef steaks,520,5.5,Refrigerator
+Beef steaks,1500,15,Refrigerator
+Pork ribs,490,5,Refrigerator
+Pork ribs,1450,14,Refrigerator
+Sausages,450,4.5,Refrigerator
+Sausages,1300,13,Refrigerator
+Ham,430,4.5,Refrigerator
+Ham,1200,12,Refrigerator
+Bacon,420,4.5,Refrigerator
+Bacon,1250,12,Refrigerator
+Frozen seafood mix,700,6.5,Refrigerator
+Frozen seafood mix,1800,18,Refrigerator
+Frozen dumplings,600,5.5,Refrigerator
+Frozen dumplings,1600,16,Refrigerator
+Frozen fries,650,6,Refrigerator
+Frozen fries,1700,17,Refrigerator
+Frozen nuggets,580,5.2,Refrigerator
+Frozen nuggets,1500,15,Refrigerator
+Frozen pancakes,540,5,Refrigerator
+Frozen pancakes,1400,14,Refrigerator
+Frozen waffles,560,5.3,Refrigerator
+Frozen waffles,1500,15,Refrigerator
+Frozen dough,570,5.4,Refrigerator
+Frozen dough,1600,16,Refrigerator
+Frozen pastry,600,5.6,Refrigerator
+Frozen pastry,1700,17,Refrigerator
+Frozen meals,620,6,Refrigerator
+Frozen meals,1800,18,Refrigerator
+Prepared food,400,6,Refrigerator
+Prepared food,1500,17,Refrigerator
+Packaged food,350,5,Refrigerator
+Packaged food,1400,16,Refrigerator
+Organic food,300,5,Refrigerator
+Organic food,1300,15,Refrigerator
+Supermarket food,500,7,Refrigerator
+Supermarket food,1600,18,Refrigerator
+Retail food,450,6,Refrigerator
+Retail food,1550,17,Refrigerator
+Wholesale food,600,8,Refrigerator
+Wholesale food,1800,20,Refrigerator
+Rice bags,300,5,Medium van
+Rice bags,1200,12,Medium van
+Pasta boxes,250,4,Small van
+Pasta boxes,1000,10,Medium van
+Flour sacks,400,6,Medium van
+Flour sacks,1500,15,Medium van
+Sugar bags,350,5,Medium van
+Sugar bags,1400,14,Medium van
+Salt bags,300,5,Medium van
+Salt bags,1200,12,Medium van
+Canned food,200,4,Small van
+Canned food,1000,10,Medium van
+Canned vegetables,220,4.5,Small van
+Canned vegetables,1100,11,Medium van
+Snack boxes,150,3,Small van
+Snack boxes,900,9,Medium van
+Chips,120,2.5,Small van
+Chips,800,8,Medium van
+Biscuits,180,3,Small van
+Biscuits,850,9,Medium van
+Chocolate,160,2.8,Small van
+Chocolate,900,9,Medium van
+Bottled water,500,8,Isothermal van
+Bottled water,1500,15,Isothermal van
+Juice cartons,400,7,Isothermal van
+Juice cartons,1400,14,Isothermal van
+Soft drinks,450,7.5,Isothermal van
+Soft drinks,1300,13,Isothermal van
+Tea boxes,200,3,Small van
+Tea boxes,800,8,Medium van
+Coffee packs,220,3.2,Small van
+Coffee packs,900,9,Medium van
+Dry food,300,5,Medium van
+Dry food,1200,12,Medium van
+Packaged snacks,180,3,Small van
+Packaged snacks,950,9.5,Medium van

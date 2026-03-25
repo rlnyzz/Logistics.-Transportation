@@ -4,7 +4,6 @@ using Logistics_Transportation.Repositories;
 using Logistics_Transportation.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace Logistics_Transportation.Controllers

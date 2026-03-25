@@ -135,8 +135,6 @@ namespace Logistics_Transportation.Controllers
             {
                 return NotFound("Машина не найдена по данному id");
             }
-            
-            await _carRepository.DeleteAsync(car);
 
             var actionLog = new ActionLog
             {
@@ -146,6 +144,8 @@ namespace Logistics_Transportation.Controllers
                 EntityId = car.Id,
                 CreatedTime = DateTime.UtcNow
             };
+
+            await _carRepository.DeleteAsync(car);
 
             await _actionLogService.LogAsync(actionLog);
 
