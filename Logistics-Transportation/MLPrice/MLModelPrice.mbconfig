@@ -1,0 +1,348 @@
+﻿{
+  "Scenario": "Regression",
+  "DataSource": {
+    "Version": 3,
+    "EscapeCharacter": "\"",
+    "ReadMultiLines": false,
+    "KeepDiacritics": false,
+    "KeepPunctuations": false,
+    "AllowQuoting": false,
+    "Type": "TabularFile",
+    "FilePath": "C:\\Users\\Damir-ilyasov\\MIREA\\kurs-2\\Logistics-Transportation\\Logistics-Transportation\\MLData\\MLFinalPrice.csv",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "DistanceKm",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "DurationMin",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Weight",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Volume",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "CarType",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Price",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastTreeRegression",
+        "Score": 0.97995660992377887,
+        "RuntimeInSeconds": 0.264,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3",
+          "e0": {
+            "OutputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume"
+            ],
+            "InputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume"
+            ]
+          },
+          "e1": {
+            "InputColumnName": "CarType",
+            "OutputColumnName": "CarType"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume",
+              "CarType"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 17,
+            "MinimumExampleCountPerLeaf": 9,
+            "NumberOfTrees": 22,
+            "MaximumBinCountPerFeature": 278,
+            "FeatureFraction": 0.99991579178683632,
+            "LearningRate": 0.29261759118142933,
+            "LabelColumnName": "Price",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastTreeRegression",
+        "Score": 0.97967735561544556,
+        "RuntimeInSeconds": 0.273,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3",
+          "e0": {
+            "OutputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume"
+            ],
+            "InputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume"
+            ]
+          },
+          "e1": {
+            "InputColumnName": "CarType",
+            "OutputColumnName": "CarType"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume",
+              "CarType"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 16,
+            "MinimumExampleCountPerLeaf": 8,
+            "NumberOfTrees": 22,
+            "MaximumBinCountPerFeature": 277,
+            "FeatureFraction": 0.999383572099999,
+            "LearningRate": 0.29107175405284863,
+            "LabelColumnName": "Price",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastTreeRegression",
+        "Score": 0.97967228787749117,
+        "RuntimeInSeconds": 0.284,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3",
+          "e0": {
+            "OutputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume"
+            ],
+            "InputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume"
+            ]
+          },
+          "e1": {
+            "InputColumnName": "CarType",
+            "OutputColumnName": "CarType"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume",
+              "CarType"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 17,
+            "MinimumExampleCountPerLeaf": 8,
+            "NumberOfTrees": 21,
+            "MaximumBinCountPerFeature": 277,
+            "FeatureFraction": 0.99999999,
+            "LearningRate": 0.29244664884538457,
+            "LabelColumnName": "Price",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastTreeRegression",
+        "Score": 0.97963061886000025,
+        "RuntimeInSeconds": 0.266,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3",
+          "e0": {
+            "OutputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume"
+            ],
+            "InputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume"
+            ]
+          },
+          "e1": {
+            "InputColumnName": "CarType",
+            "OutputColumnName": "CarType"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume",
+              "CarType"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 16,
+            "MinimumExampleCountPerLeaf": 9,
+            "NumberOfTrees": 21,
+            "MaximumBinCountPerFeature": 278,
+            "FeatureFraction": 0.99999999,
+            "LearningRate": 0.29378134144235823,
+            "LabelColumnName": "Price",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastTreeRegression",
+        "Score": 0.97959836297226643,
+        "RuntimeInSeconds": 0.269,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3",
+          "e0": {
+            "OutputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume"
+            ],
+            "InputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume"
+            ]
+          },
+          "e1": {
+            "InputColumnName": "CarType",
+            "OutputColumnName": "CarType"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "DistanceKm",
+              "DurationMin",
+              "Weight",
+              "Volume",
+              "CarType"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 17,
+            "MinimumExampleCountPerLeaf": 8,
+            "NumberOfTrees": 21,
+            "MaximumBinCountPerFeature": 277,
+            "FeatureFraction": 0.99990756213045739,
+            "LearningRate": 0.2921990694182004,
+            "LabelColumnName": "Price",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "ReplaceMissingValues",
+      "e1": "FeaturizeText",
+      "e2": "Concatenate",
+      "e3": "FastTreeRegression",
+      "e4": "FastForestRegression",
+      "e5": "LightGbmRegression",
+      "e6": "LbfgsPoissonRegressionRegression",
+      "e7": "SdcaRegression"
+    },
+    "Schema": "e0 * e1 * e2 * (e3 + e4 + e5 + e6 + e7)",
+    "MetricName": "RSquared",
+    "ModelFilePath": "C:\\Users\\Damir-ilyasov\\MIREA\\kurs-2\\Logistics-Transportation\\Logistics-Transportation\\MLPrice\\MLModelPrice.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 5,
+  "TrainingOption": {
+    "Version": 2,
+    "Subsampling": false,
+    "Type": "RegressionTrainingOption",
+    "TrainingTime": 60,
+    "LabelColumn": "Price",
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "CrossValidationValidationOption",
+      "NumberOfFolds": 5
+    }
+  }
+}
