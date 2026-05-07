@@ -13,7 +13,8 @@ namespace Logistics_Transportation.Repositories
 
         public async Task<List<Driver>> GetAllAsync()
         {
-            return await _dbContext.Drivers.AsNoTracking().ToListAsync();
+            return await _dbContext.Drivers
+                .AsNoTracking().ToListAsync();
         }
         public async Task<Driver?> GetByIdAsync(int id)
         {
@@ -45,7 +46,9 @@ namespace Logistics_Transportation.Repositories
             int? minRate, int? maxRate,
             string? licenceCategory)
         {
-            var query = _dbContext.Drivers.AsNoTracking().AsQueryable();
+            var query = _dbContext.Drivers
+                .Include(t => t.LicenceCategories)
+                .AsNoTracking().AsQueryable();
             var licence = await _dbContext.LicenceCategories.FirstOrDefaultAsync(c => c.Name == licenceCategory);
 
             if (!string.IsNullOrEmpty(name))
@@ -80,7 +83,7 @@ namespace Logistics_Transportation.Repositories
                 query = query.Where(c => c.CategoryLicenceId == licence.Id);
             }
 
-            return await query.ToListAsync();
+            return await query.OrderByDescending(t => t.Id).ToListAsync();
         }
     }
 }

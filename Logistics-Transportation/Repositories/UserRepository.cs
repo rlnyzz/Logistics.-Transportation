@@ -23,7 +23,7 @@ namespace Logistics_Transportation.Repositories
                 query = query.Where(c => c.PhoneNumber.Contains(phone));
             }
 
-            return await query.ToListAsync();
+            return await query.OrderByDescending(t => t.Id).ToListAsync();
         }
         public async Task<User?> GetByIdAsync(string id)
         {

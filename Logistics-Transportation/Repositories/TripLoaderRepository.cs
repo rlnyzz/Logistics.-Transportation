@@ -13,7 +13,10 @@ namespace Logistics_Transportation.Repositories
 
         public async Task<List<TripLoaders>> GetAllWithFilterAsync(int? tripId, int? loaderId)
         {
-            var query = _dbContext.TripLoaders.AsNoTracking().AsQueryable();
+            var query = _dbContext.TripLoaders
+                .Include(t => (t.trip).order)
+                .Include(t => t.loader)
+                .AsNoTracking().AsQueryable();
 
             if (tripId.HasValue)
             {
@@ -24,7 +27,7 @@ namespace Logistics_Transportation.Repositories
                 query = query.Where(c => c.LoaderId == loaderId);
             }
 
-            return await query.ToListAsync();
+            return await query.OrderByDescending(t => t.Id).ToListAsync();
         }
 
         public async Task<TripLoaders?> GetByIdAsync(int id)

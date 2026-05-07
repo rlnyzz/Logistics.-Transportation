@@ -34,7 +34,6 @@ namespace Logistics_Transportation.Controllers
         [Authorize(Roles = "Client")]
         public async Task<IActionResult> GetClientProfileById()
         {
-            // Подвязать к JWT access
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var user = await _userRepository.GetByIdAsync(userId);
             return Ok(user);
