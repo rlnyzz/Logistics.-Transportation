@@ -14,7 +14,11 @@ namespace Logistics_Transportation.Repositories
             decimal? minFinalePrice, decimal? maxFinalePrice,
             int? minFinaleTimeMinutes, int? maxFinaleTimeMinutes)
         {
-            var query = _dbContext.Trips.AsNoTracking().AsQueryable();
+            var query = _dbContext.Trips
+                .Include(t => t.order)
+                .Include(t => t.driver)
+                .Include(t => t.car)
+                .AsNoTracking().AsQueryable();
 
             if (orderId.HasValue)
             {
@@ -47,14 +51,19 @@ namespace Logistics_Transportation.Repositories
                 query = query.Where(c => c.FinaleTimeMinutes <= maxFinaleTimeMinutes);
             }
 
-            return await query.ToListAsync();
+            return await query.OrderByDescending(t => t.Id).ToListAsync();
         }
 
         public async Task<List<Trip>> GetAllByUserIdWithFilterAsync(string userId,int? orderId, int? driverId, int? carId,
             decimal? minFinalePrice, decimal? maxFinalePrice,
             int? minFinaleTimeMinutes, int? maxFinaleTimeMinutes)
         {
-            var query = _dbContext.Trips.AsNoTracking().Where(c => c.order.UserId == userId).AsQueryable();
+            var query = _dbContext.Trips
+                .Include(t => t.order)
+                .Include(t => t.driver)
+                .Include(t => t.car)
+                .OrderBy(t => t.Id)
+                .AsNoTracking().Where(c => c.order.UserId == userId).AsQueryable();
 
             if (orderId.HasValue)
             {
@@ -87,7 +96,7 @@ namespace Logistics_Transportation.Repositories
                 query = query.Where(c => c.FinaleTimeMinutes <= maxFinaleTimeMinutes);
             }
 
-            return await query.ToListAsync();
+            return await query.OrderByDescending(t => t.Id).ToListAsync();
         }
 
         public async Task<Trip?> GetByIdAsync(int id)

@@ -36,8 +36,8 @@ namespace Logistics_Transportation
             public string CarType { get; set; }
 
             [LoadColumn(5)]
-            [ColumnName(@"Price")]
-            public float Price { get; set; }
+            [ColumnName(@"FinalPrice")]
+            public float FinalPrice { get; set; }
 
         }
 
@@ -64,8 +64,8 @@ namespace Logistics_Transportation
             [ColumnName(@"CarType")]
             public float[] CarType { get; set; }
 
-            [ColumnName(@"Price")]
-            public float Price { get; set; }
+            [ColumnName(@"FinalPrice")]
+            public float FinalPrice { get; set; }
 
             [ColumnName(@"Features")]
             public float[] Features { get; set; }
@@ -77,7 +77,7 @@ namespace Logistics_Transportation
 
         #endregion
 
-        private static string MLNetModelPath = Path.GetFullPath("MLPrice/MLModelPrice.mlnet");
+        private static string MLNetModelPath = Path.GetFullPath("MLModelPrice.mlnet");
 
         public static readonly Lazy<PredictionEngine<ModelInput, ModelOutput>> PredictEngine = new Lazy<PredictionEngine<ModelInput, ModelOutput>>(() => CreatePredictEngine(), true);
 

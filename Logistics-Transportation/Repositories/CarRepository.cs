@@ -44,7 +44,9 @@ namespace Logistics_Transportation.Repositories
             decimal? minFuelConsumption, decimal? maxFuelConsumption,
             string? licenceCategory)
         {
-            var query = _dbContext.Cars.AsNoTracking().AsQueryable();
+            var query = _dbContext.Cars
+                .Include(t => t.LicenceCategories)  
+                .AsNoTracking().AsQueryable();
             var licence = await _dbContext.LicenceCategories.FirstOrDefaultAsync(c => c.Name == licenceCategory);
 
             if (!string.IsNullOrEmpty(carMake))
@@ -96,7 +98,7 @@ namespace Logistics_Transportation.Repositories
                 query = query.Where(c => c.LicenceCategoriesId == licence.Id);
             }
             
-            return await query.ToListAsync(); 
+            return await query.OrderByDescending(t => t.Id).ToListAsync(); 
         }
     }
 }

@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Trainers;
-using Microsoft.ML.Trainers.FastTree;
 
 namespace Logistics_Transportation
 {
-    public partial class MLModelPrice
+    public partial class MLModel
     {
-        public const string RetrainFilePath =  @"C:\Users\Damir-ilyasov\MIREA\kurs-2\Logistics-Transportation\Logistics-Transportation\MLData\MLFinalPrice.csv";
+        public const string RetrainFilePath =  @"C:\Users\Damir-ilyasov\MIREA\kurs-2\Logistics-Transportation\Logistics-Transportation\ML\dataset_rus_description_result.csv";
         public const char RetrainSeparatorChar = ',';
         public const bool RetrainHasHeader =  true;
         public const bool RetrainAllowQuoting =  false;
@@ -90,10 +89,11 @@ namespace Logistics_Transportation
         public static IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
         {
             // Data process configuration with pipeline data transformations
-            var pipeline = mlContext.Transforms.ReplaceMissingValues(new []{new InputOutputColumnPair(@"DistanceKm", @"DistanceKm"),new InputOutputColumnPair(@"DurationMin", @"DurationMin"),new InputOutputColumnPair(@"Weight", @"Weight"),new InputOutputColumnPair(@"Volume", @"Volume")})      
-                                    .Append(mlContext.Transforms.Text.FeaturizeText(inputColumnName:@"CarType",outputColumnName:@"CarType"))      
-                                    .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"DistanceKm",@"DurationMin",@"Weight",@"Volume",@"CarType"}))      
-                                    .Append(mlContext.Regression.Trainers.FastTree(new FastTreeRegressionTrainer.Options(){NumberOfLeaves=17,MinimumExampleCountPerLeaf=9,NumberOfTrees=22,MaximumBinCountPerFeature=278,FeatureFraction=0.9999157917868363,LearningRate=0.2926175911814293,LabelColumnName=@"Price",FeatureColumnName=@"Features",DiskTranspose=false}));
+            var pipeline = mlContext.Transforms.Text.FeaturizeText(inputColumnName:@"description",outputColumnName:@"description")      
+                                    .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"description"}))      
+                                    .Append(mlContext.Transforms.Conversion.MapValueToKey(outputColumnName:@"result",inputColumnName:@"result",addKeyValueAnnotationsAsText:false))      
+                                    .Append(mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(new LbfgsMaximumEntropyMulticlassTrainer.Options(){L1Regularization=0.3998739F,L2Regularization=1.1254736F,LabelColumnName=@"result",FeatureColumnName=@"Features"}))      
+                                    .Append(mlContext.Transforms.Conversion.MapKeyToValue(outputColumnName:@"PredictedLabel",inputColumnName:@"PredictedLabel"));
 
             return pipeline;
         }

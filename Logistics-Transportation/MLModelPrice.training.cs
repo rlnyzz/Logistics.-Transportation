@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Trainers;
+using Microsoft.ML.Trainers.LightGbm;
 
 namespace Logistics_Transportation
 {
-    public partial class MLModel
+    public partial class MLModelPrice
     {
-        public const string RetrainFilePath =  @"C:\Users\Damir-ilyasov\MIREA\kurs-2\Logistics-Transportation\Logistics-Transportation\MLData\dataset_smart.csv";
+        public const string RetrainFilePath =  @"C:\Users\Damir-ilyasov\MIREA\kurs-2\Logistics-Transportation\Logistics-Transportation\ML\dataset_price_clean.csv";
         public const char RetrainSeparatorChar = ',';
         public const bool RetrainHasHeader =  true;
         public const bool RetrainAllowQuoting =  false;
@@ -89,11 +90,10 @@ namespace Logistics_Transportation
         public static IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
         {
             // Data process configuration with pipeline data transformations
-            var pipeline = mlContext.Transforms.Text.FeaturizeText(inputColumnName:@"description",outputColumnName:@"description")      
-                                    .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"description"}))      
-                                    .Append(mlContext.Transforms.Conversion.MapValueToKey(outputColumnName:@"result",inputColumnName:@"result",addKeyValueAnnotationsAsText:false))      
-                                    .Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator: mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(new LbfgsLogisticRegressionBinaryTrainer.Options(){L1Regularization=0.03125F,L2Regularization=0.21173483F,LabelColumnName=@"result",FeatureColumnName=@"Features"}), labelColumnName:@"result"))      
-                                    .Append(mlContext.Transforms.Conversion.MapKeyToValue(outputColumnName:@"PredictedLabel",inputColumnName:@"PredictedLabel"));
+            var pipeline = mlContext.Transforms.ReplaceMissingValues(new []{new InputOutputColumnPair(@"DistanceKm", @"DistanceKm"),new InputOutputColumnPair(@"DurationMin", @"DurationMin"),new InputOutputColumnPair(@"Weight", @"Weight"),new InputOutputColumnPair(@"Volume", @"Volume")})      
+                                    .Append(mlContext.Transforms.Text.FeaturizeText(inputColumnName:@"CarType",outputColumnName:@"CarType"))      
+                                    .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"DistanceKm",@"DurationMin",@"Weight",@"Volume",@"CarType"}))      
+                                    .Append(mlContext.Regression.Trainers.LightGbm(new LightGbmRegressionTrainer.Options(){NumberOfLeaves=6220,NumberOfIterations=4,MinimumExampleCountPerLeaf=32,LearningRate=0.9999997766729865,LabelColumnName=@"FinalPrice",FeatureColumnName=@"Features",Booster=new GradientBooster.Options(){SubsampleFraction=0.9999997766729865,FeatureFraction=0.9710495778949253,L1Regularization=2E-10,L2Regularization=0.6481546338083489},MaximumBinCountPerFeature=273}));
 
             return pipeline;
         }

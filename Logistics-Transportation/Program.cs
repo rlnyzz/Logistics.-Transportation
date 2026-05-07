@@ -10,8 +10,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using StackExchange.Redis;
 using System.Security.Claims;
+using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
+
 var configuration = builder.Configuration;
 
 builder.Services.AddControllers();
@@ -81,6 +83,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
             ValidateIssuerSigningKey = true,
             RoleClaimType = ClaimTypes.Role
         };
+        options.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                var token = context.Request.Cookies["accessToken"];
+                if (!string.IsNullOrEmpty(token))
+                {
+                    context.Token = token;
+                }
+                return Task.CompletedTask;
+            }
+        };
     });
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
@@ -105,7 +119,36 @@ builder.Services.AddControllers()
 builder.Services.AddSingleton<IConnectionMultiplexer>(
     ConnectionMultiplexer.Connect(configuration.GetConnectionString("Redis")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Frontend", policy =>
+    {
+        policy
+            .WithOrigins("https://localhost:5173")
+            .WithOrigins("https://garbage-scabbed-clothing.ngrok-free.dev")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
+
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders =
+        ForwardedHeaders.XForwardedFor |
+        ForwardedHeaders.XForwardedProto;
+
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear();
+});
+
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    db.Database.Migrate();
+}
 
 using (var scope = app.Services.CreateScope())
 {
@@ -140,11 +183,18 @@ using (var scope = app.Services.CreateScope())
         await userManager.AddToRoleAsync(operatorUser, "Operator");
     }
 }
+
+app.UseForwardedHeaders();
+
+app.UseCors("Frontend");
+
 app.UseSwagger();
 app.UseSwaggerUI();
+
 app.UseHttpsRedirection();
-app.UseIpRateLimiting();
+
 app.UseAuthentication();
 app.UseAuthorization();
-app.MapControllers();
+
+app.MapControllers().RequireCors("Frontend");
 app.Run();

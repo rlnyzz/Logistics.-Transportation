@@ -62,7 +62,7 @@ namespace Logistics_Transportation.Repositories
                 query = query.Where(c => c.CargoVolume <= maxVolume);
             }
 
-            return await query.ToListAsync();
+            return await query.OrderByDescending(t => t.Id).ToListAsync();
         }
 
         public async Task<Order?> GetByIdAsync(int id)
@@ -144,7 +144,7 @@ namespace Logistics_Transportation.Repositories
                 query = query.Where(c => c.CargoVolume <= maxVolume);
             }
             
-            return await query.ToListAsync();
+            return await query.OrderByDescending(t => t.Id).ToListAsync();
         }
     }
 }

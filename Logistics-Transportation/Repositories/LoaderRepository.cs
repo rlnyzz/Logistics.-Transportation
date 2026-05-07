@@ -33,7 +33,7 @@ namespace Logistics_Transportation.Repositories
                 query = query.Where(c => c.Age <= maxAge);
             }
 
-            return await query.ToListAsync();
+            return await query.OrderByDescending(t => t.Id).ToListAsync();
         }
         public async Task<Loader?> GetByIdAsync(int id)
         {
